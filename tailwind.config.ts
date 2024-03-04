@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      violet: "#9E7F66",
+      violet: "#545DC8",
       "light-violet": "#939BF4",
       "very-dark-blue": "#19202D",
       midnight: "#121721",
