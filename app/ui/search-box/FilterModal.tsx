@@ -1,7 +1,7 @@
 import iconLocation from "@/public/desktop/icon-location.svg";
-import InputText from "../InputText";
-import InputCheckbox from "../InputCheckbox";
-import PrimaryButton from "../PrimaryButton";
+import InputText from "../common/InputText";
+import InputCheckbox from "../common/InputCheckbox";
+import PrimaryButton from "../common/PrimaryButton";
 
 const FilterModal = () => {
   return (
