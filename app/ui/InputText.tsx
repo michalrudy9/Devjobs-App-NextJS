@@ -9,7 +9,7 @@ const InputText: React.FC<{
   placeholder: string;
   className?: string;
 }> = ({ src, alt, name, placeholder, className }) => {
-  const style: string = `rounded-lg flex p-5 w-full gap-x-5 ${className}`;
+  const style: string = `rounded-lg flex w-full gap-x-5 ${className}`;
 
   return (
     <div className={style}>
