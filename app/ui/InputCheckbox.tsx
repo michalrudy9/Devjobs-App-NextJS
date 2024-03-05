@@ -9,7 +9,8 @@ import iconCheck from "@/public/desktop/icon-check.svg";
 const InputCheckbox: React.FC<{
   name: string;
   labelText: string;
-}> = ({ name, labelText }) => {
+  className?: string;
+}> = ({ name, labelText, className }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const checkboxState = useRef<HTMLInputElement>(null);
 
@@ -17,8 +18,10 @@ const InputCheckbox: React.FC<{
     setIsChecked(checkboxState.current?.checked ?? false);
   };
 
+  const style: string = `${classes.label} ${className}`;
+
   return (
-    <label className={classes.label}>
+    <label className={style}>
       <input
         type="checkbox"
         name={name}
