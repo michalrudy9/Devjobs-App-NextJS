@@ -1,6 +1,6 @@
 import React from "react";
 
-const PrimaryButton: React.FC<{ text: string; className?: string }> = ({
+const PrimaryButton: React.FC<{ text?: string; className?: string }> = ({
   text,
   className,
 }) => {

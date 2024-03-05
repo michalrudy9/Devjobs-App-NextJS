@@ -1,9 +1,12 @@
+import React, { MouseEventHandler } from "react";
+
 import iconFilter from "@/public/mobile/icon-filter.svg";
 import iconSearchWhite from "@/public/desktop/icon-search-white.svg";
 import ImageButton from "./ImageButton";
-import FilterModal from "./FilterModal";
 
-const SearchBox = () => {
+const SearchBox: React.FC<{
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+}> = ({ onClick }) => {
   return (
     <>
       <form className="bg-white rounded-lg p-5 flex justify-between items-center">
@@ -14,7 +17,7 @@ const SearchBox = () => {
           className="outline-none"
         />
         <div className="flex gap-x-5 justify-center items-center">
-          <ImageButton src={iconFilter} alt="Filter icon" />
+          <ImageButton src={iconFilter} alt="Filter icon" onClick={onClick} />
           <ImageButton
             src={iconSearchWhite}
             alt="Search icon"
@@ -22,7 +25,6 @@ const SearchBox = () => {
           />
         </div>
       </form>
-      
     </>
   );
 };

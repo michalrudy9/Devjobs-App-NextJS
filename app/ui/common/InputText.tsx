@@ -5,8 +5,8 @@ import React from "react";
 const InputText: React.FC<{
   src: string | StaticImport;
   alt: string;
-  name: string;
-  placeholder: string;
+  name?: string;
+  placeholder?: string;
   className?: string;
 }> = ({ src, alt, name, placeholder, className }) => {
   const style: string = `rounded-lg flex w-full gap-x-5 ${className}`;
