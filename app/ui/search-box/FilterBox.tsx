@@ -15,13 +15,13 @@ const FilterBox: React.FC<{
         <InputText
           src={iconLocation}
           alt="Location icon"
-          name="location"
+          name="locationMobile"
           placeholder="Filter by location..."
           className="pb-6"
         />
         <hr className="text-light-grey" />
         <InputCheckbox
-          name="full-time"
+          name="fullTimeMobile"
           labelText="Full Time Only"
           className="my-6"
         />

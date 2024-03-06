@@ -9,11 +9,11 @@ const InputText: React.FC<{
   placeholder?: string;
   className?: string;
 }> = ({ src, alt, name, placeholder, className }) => {
-  const style: string = `rounded-lg flex w-full gap-x-5 ${className}`;
+  const style: string = `flex w-full gap-x-5 ${className}`;
 
   return (
     <div className={style}>
-      <Image src={src} alt={alt} className="min-w-5" />
+      <Image src={src} alt={alt} className="w-auto h-full" />
       <input
         type="text"
         name={name}
