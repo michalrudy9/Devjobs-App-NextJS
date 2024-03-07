@@ -1,5 +1,7 @@
+import Header from "@/app/ui/common/Header";
+
 const JobOffers = () => {
-  return <h1>Job offers page</h1>;
+  return <Header />;
 };
 
 export default JobOffers;
