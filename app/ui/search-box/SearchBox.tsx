@@ -6,7 +6,7 @@ import iconSearchWhite from "@/public/desktop/icon-search-white.svg";
 import iconLocation from "@/public/desktop/icon-location.svg";
 import ImageButton from "./ImageButton";
 import InputText from "../common/InputText";
-import InputCheckbox from "../common/InputCheckbox";
+import InputCheckbox from "../common/inputCheckbox/InputCheckbox";
 import PrimaryButton from "../common/PrimaryButton";
 
 const SearchBox: React.FC<{

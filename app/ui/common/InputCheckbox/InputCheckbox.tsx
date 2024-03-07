@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 
-import classes from "@/app/ui/common/InputCheckbox.module.css";
+import classes from "./InputCheckbox.module.css";
 import iconCheck from "@/public/desktop/icon-check.svg";
 
 const InputCheckbox: React.FC<{
