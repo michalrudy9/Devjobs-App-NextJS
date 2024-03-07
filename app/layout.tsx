@@ -13,7 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-kumbh-sans">{children}</body>
+      <body className="font-kumbh-sans">
+        {children}
+        <div id="modal"></div>
+      </body>
     </html>
   );
 }

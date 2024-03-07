@@ -1,0 +1,32 @@
+.label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    column-gap: 2rem;
+}
+
+.label input[type=checkbox] {
+    visibility: hidden;
+}
+
+.span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #F4F6F8;
+    border-radius: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label:hover input~.span {
+    background-color: #939BF4;
+}
+
+.label input:checked~.span {
+    background-color: #545DC8;
+}
