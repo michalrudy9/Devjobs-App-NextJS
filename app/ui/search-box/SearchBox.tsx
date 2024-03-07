@@ -11,46 +11,47 @@ import PrimaryButton from "../common/PrimaryButton";
 
 const SearchBox: React.FC<{
   onClick?: MouseEventHandler<HTMLButtonElement>;
-}> = ({ onClick }) => {
+  className?: string;
+}> = ({ onClick, className }) => {
+  const style: string = `bg-white rounded-lg p-5 md:gap-x-5 flex justify-between items-center ${className}`;
+
   return (
-    <>
-      <form className="bg-white rounded-lg p-5 md:gap-x-5 flex justify-between items-center">
-        <input
-          type="text"
-          name="searchTextMobile"
-          placeholder="Filter by title..."
-          className="outline-none md:hidden"
-        />
-        <div className="flex gap-x-5 justify-center items-center md:hidden">
-          <ImageButton src={iconFilter} alt="Filter icon" onClick={onClick} />
-          <ImageButton
-            src={iconSearchWhite}
-            alt="Search icon"
-            className="bg-violet rounded-md hover:bg-light-violet"
-          />
-        </div>
-        <InputText
-          src={iconSearch}
+    <form className={style}>
+      <input
+        type="text"
+        name="searchTextMobile"
+        placeholder="Filter by title..."
+        className="outline-none md:hidden"
+      />
+      <div className="flex gap-x-5 justify-center items-center md:hidden">
+        <ImageButton src={iconFilter} alt="Filter icon" onClick={onClick} />
+        <ImageButton
+          src={iconSearchWhite}
           alt="Search icon"
-          name="searchText"
-          placeholder="Filter by title, companies, expertise..."
-          className="hidden md:flex w-[30%]"
+          className="bg-violet rounded-md hover:bg-light-violet"
         />
-        <InputText
-          src={iconLocation}
-          alt="Location icon"
-          name="location"
-          placeholder="Filter by location..."
-          className="hidden md:flex w-[30%]"
-        />
-        <InputCheckbox
-          name="fullTime"
-          labelText="Full Time"
-          className="!hidden md:!flex"
-        />
-        <PrimaryButton text="Search" className="hidden md:flex" />
-      </form>
-    </>
+      </div>
+      <InputText
+        src={iconSearch}
+        alt="Search icon"
+        name="searchText"
+        placeholder="Filter by title, companies, expertise..."
+        className="hidden md:flex w-[30%]"
+      />
+      <InputText
+        src={iconLocation}
+        alt="Location icon"
+        name="location"
+        placeholder="Filter by location..."
+        className="hidden md:flex w-[30%]"
+      />
+      <InputCheckbox
+        name="fullTime"
+        labelText="Full Time"
+        className="!hidden md:!flex md:min-w-[8rem]"
+      />
+      <PrimaryButton text="Search" className="hidden md:flex" />
+    </form>
   );
 };
 
