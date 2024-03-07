@@ -21,6 +21,9 @@ const config: Config = {
       fontFamily: {
         "kumbh-sans": ["Kumbh Sans", "sans-serif"],
       },
+      backgroundImage: {
+        "mobile-pattern-header": "url('/mobile/bg-pattern-header.svg')",
+      },
     },
   },
   plugins: [],
