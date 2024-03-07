@@ -23,6 +23,8 @@ const config: Config = {
       },
       backgroundImage: {
         "mobile-pattern-header": "url('/mobile/bg-pattern-header.svg')",
+        "tablet-pattern-header": "url('/tablet/bg-pattern-header.svg')",
+        "desktop-pattern-header": "url('/desktop/bg-pattern-header.svg')",
       },
     },
   },
