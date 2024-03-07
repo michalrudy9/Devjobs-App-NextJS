@@ -39,7 +39,7 @@ const Home = () => {
           </p>
           <SearchBox onClick={startFiltering} />
           <Link
-            href="/"
+            href="/job-offers"
             className="text-light-grey mt-[7rem] text-xl flex justify-center"
           >
             All job offers (58)
