@@ -28,13 +28,13 @@ const Home = () => {
           alt="Page background"
           className="col-start-1 col-end-2 row-start-1 row-end-2 w-auto h-screen"
         />
-        <main className="col-start-1 col-end-2 row-start-1 row-end-2  h-screen p-5">
+        <main className="col-start-1 col-end-2 row-start-1 row-end-2 h-screen p-5 lg:p-20">
           <header>
-            <h1 className="text-light-grey text-4xl text-center my-10">
+            <h1 className="text-light-grey text-4xl text-center lg:text-left my-10">
               <Link href="/">devjobs</Link>
             </h1>
           </header>
-          <p className="text-center font-bold text-very-dark-blue text-5xl my-20 leading-normal">
+          <p className="text-center lg:text-left font-bold text-very-dark-blue text-5xl my-20 leading-normal">
             Find your dream job in IT
           </p>
           <SearchBox onClick={startFiltering} />
