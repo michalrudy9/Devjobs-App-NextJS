@@ -1,25 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import scootIcon from "@/public/logos/scoot.svg";
-
 const JobOfferItem = () => {
   return (
-    <article className="bg-white rounded-md px-8 pb-8 mt-14 md:w-[21.188rem] md:h-[15.813rem]">
+    <article className="bg-white rounded-md px-8 pb-8 mt-14 md:h-[18rem]">
       <div
-        style={{ backgroundColor: "hsl(36, 87%, 49%)" }}
+        style={{ backgroundColor: "" }}
         className="w-[3.125rem] h-[3.125rem] rounded-2xl flex justify-center items-center translate-y-[-1.7rem]"
       >
-        <Image src={scootIcon} alt="Scoot icon" />
+        <Image src={} alt="Scoot icon" width={} height={} />
       </div>
-      <section className="flex flex-col justify-between gap-y-10">
+      <section className="h-[calc(100%-3.5rem)] flex flex-col justify-between ">
         <div className="flex flex-col gap-y-5">
-          <p className="text-dark-grey">5h ago . Full Time</p>
-          <h3>Senior Software Engineer</h3>
-          <p className="text-dark-grey">Scoot</p>
+          <p className="text-dark-grey">
+            {} . {}
+          </p>
+          <h3>{}</h3>
+          <p className="text-dark-grey">{}</p>
         </div>
         <Link href="/" className="text-violet font-bold">
-          United Kingdom
+          {}
         </Link>
       </section>
     </article>
