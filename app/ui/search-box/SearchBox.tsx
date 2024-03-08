@@ -7,7 +7,7 @@ import iconLocation from "@/public/desktop/icon-location.svg";
 import ImageButton from "./ImageButton";
 import InputText from "../common/InputText";
 import InputCheckbox from "../common/inputCheckbox/InputCheckbox";
-import PrimaryButton from "../common/PrimaryButton";
+import PrimaryButton from "../common/buttons/PrimaryButton";
 
 const SearchBox: React.FC<{
   onClick?: MouseEventHandler<HTMLButtonElement>;

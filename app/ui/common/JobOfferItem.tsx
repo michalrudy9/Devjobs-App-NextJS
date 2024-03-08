@@ -8,7 +8,7 @@ const JobOfferItem = () => {
         style={{ backgroundColor: "" }}
         className="w-[3.125rem] h-[3.125rem] rounded-2xl flex justify-center items-center translate-y-[-1.7rem]"
       >
-        <Image src={} alt="Scoot icon" width={} height={} />
+        {/* <Image src={} alt="Scoot icon" width={} height={} /> */}
       </div>
       <section className="h-[calc(100%-3.5rem)] flex flex-col justify-between ">
         <div className="flex flex-col gap-y-5">

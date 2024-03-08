@@ -1,6 +1,6 @@
 import Header from "@/app/ui/common/Header";
 import JobOfferItem from "../ui/common/JobOfferItem";
-import PrimaryButton from "../ui/common/PrimaryButton";
+import PrimaryButton from "../ui/common/buttons/PrimaryButton";
 import SearchBox from "../ui/search-box/SearchBox";
 
 const JobOffers = () => {
