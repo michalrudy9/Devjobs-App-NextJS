@@ -1,11 +1,14 @@
 import Header from "@/app/ui/common/Header";
 import JobOfferItem from "../ui/common/JobOfferItem";
-import PrimaryButton from "../ui/common/PrimaryButton";
+import PrimaryButton from "../ui/common/buttons/PrimaryButton";
+import SearchBox from "../ui/search-box/SearchBox";
 
 const JobOffers = () => {
   return (
     <>
-      <Header />
+      <Header>
+        <SearchBox className="translate-y-16" />
+      </Header>
       <main className="mt-[5rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
         <ul className="flex flex-wrap md:gap-x-4">
           {DUMMY_DATA.map((offer) => (

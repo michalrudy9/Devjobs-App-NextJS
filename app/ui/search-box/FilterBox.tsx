@@ -3,7 +3,7 @@ import React from "react";
 import iconLocation from "@/public/desktop/icon-location.svg";
 import InputText from "../common/InputText";
 import InputCheckbox from "../common/inputCheckbox/InputCheckbox";
-import PrimaryButton from "../common/PrimaryButton";
+import PrimaryButton from "../common/buttons/PrimaryButton";
 import Modal from "./Modal";
 
 const FilterBox: React.FC<{
