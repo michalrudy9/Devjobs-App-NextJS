@@ -41,3 +41,6 @@ next-env.d.ts
 # XD or Figma file
 *.xd
 *.fig
+
+# package files
+package-lock.json
