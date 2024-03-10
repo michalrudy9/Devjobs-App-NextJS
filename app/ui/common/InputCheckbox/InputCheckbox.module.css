@@ -1,9 +1,20 @@
+.lightTheme {
+    --background-color: #F4F6F8;
+    --color: #000;
+}
+
+.darkTheme {
+    --background-color: #323742;
+    --color: #fff;
+}
+
 .label {
     display: block;
     position: relative;
     cursor: pointer;
     display: flex;
     column-gap: 2rem;
+    color: var(--color);
 }
 
 .label input[type=checkbox] {
@@ -16,7 +27,7 @@
     left: 0;
     height: 1.5rem;
     width: 1.5rem;
-    background-color: #F4F6F8;
+    background-color: var(--background-color);
     border-radius: .3rem;
     display: flex;
     justify-content: center;

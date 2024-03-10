@@ -8,20 +8,28 @@ import ImageButton from "./ImageButton";
 import InputText from "../common/InputText";
 import InputCheckbox from "../common/inputCheckbox/InputCheckbox";
 import PrimaryButton from "../common/buttons/PrimaryButton";
+import { useAppSelector } from "@/store/hooks";
 
 const SearchBox: React.FC<{
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
 }> = ({ onClick, className }) => {
-  const style: string = `bg-white rounded-lg p-5 md:gap-x-5 flex justify-between items-center ${className}`;
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
 
+  const style: string = `${
+    isLightMode ? "bg-white" : "bg-very-dark-blue"
+  } rounded-lg p-5 md:gap-x-5 flex justify-between items-center ${className}`;
+  const searchTextMobileStyle: string = `${
+    !isLightMode && "bg-very-dark-blue text-white"
+  } outline-none md:hidden`;
+  
   return (
     <form className={style}>
       <input
         type="text"
         name="searchTextMobile"
         placeholder="Filter by title..."
-        className="outline-none md:hidden"
+        className={searchTextMobileStyle}
       />
       <div className="flex gap-x-5 justify-center items-center md:hidden">
         <ImageButton src={iconFilter} alt="Filter icon" onClick={onClick} />
