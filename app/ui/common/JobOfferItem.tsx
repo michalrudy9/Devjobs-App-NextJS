@@ -1,9 +1,16 @@
+import { useAppSelector } from "@/store/hooks";
 import Image from "next/image";
 import Link from "next/link";
 
 const JobOfferItem = () => {
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
+
+  const style: string = `${
+    isLightMode ? "bg-white" : "bg-very-dark-blue"
+  } rounded-md px-8 pb-8 mt-14 md:h-[18rem]`;
+
   return (
-    <article className="bg-white rounded-md px-8 pb-8 mt-14 md:h-[18rem]">
+    <article className={style}>
       <div
         style={{ backgroundColor: "" }}
         className="w-[3.125rem] h-[3.125rem] rounded-2xl flex justify-center items-center translate-y-[-1.7rem]"

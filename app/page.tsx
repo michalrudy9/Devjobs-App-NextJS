@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import SearchBox from "./ui/search-box/SearchBox";
 import FilterBox from "./ui/search-box/FilterBox";
+import ReduxProvider from "@/store/reduxProvider";
 
 const Home = () => {
   const [isFiltering, setIsFiltering] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <ReduxProvider>
       {isFiltering && <FilterBox onClose={closeHandler} />}
       <main className="bg-mobile-pattern-header bg-no-repeat bg-cover h-screen p-5 lg:p-20">
         <header>
@@ -37,7 +38,7 @@ const Home = () => {
           All job offers (58)
         </Link>
       </main>
-    </>
+    </ReduxProvider>
   );
 };
 

@@ -5,12 +5,14 @@ import Image from "next/image";
 
 import classes from "./InputCheckbox.module.css";
 import iconCheck from "@/public/desktop/icon-check.svg";
+import { useAppSelector } from "@/store/hooks";
 
 const InputCheckbox: React.FC<{
   name?: string;
   labelText?: string;
   className?: string;
 }> = ({ name, labelText, className }) => {
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const checkboxState = useRef<HTMLInputElement>(null);
 
@@ -18,7 +20,9 @@ const InputCheckbox: React.FC<{
     setIsChecked(checkboxState.current?.checked ?? false);
   };
 
-  const style: string = `${classes.label} ${className}`;
+  const style: string = `${
+    isLightMode ? classes.lightTheme : classes.darkTheme
+  } ${classes.label} ${className}`;
 
   return (
     <label className={style}>
