@@ -10,7 +10,7 @@ const FilterBox: React.FC<{
   onClose?: React.MouseEventHandler<HTMLDivElement>;
 }> = ({ onClose }) => {
   return (
-    <Modal onClose={onClose} className="w-4/5 rounded-lg p-6">
+    <Modal onClose={onClose} className="w-4/5 rounded-lg p-6 md:hidden">
       <form>
         <InputText
           src={iconLocation}
