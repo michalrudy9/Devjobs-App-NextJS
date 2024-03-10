@@ -7,7 +7,7 @@ import OfferHeader from "@/app/ui/common/jobOffer/OfferHeader";
 import OfferMain from "@/app/ui/common/jobOffer/OfferMain";
 import OfferFooter from "@/app/ui/common/jobOffer/OfferFooter";
 
-const JobOffer = () => {
+const JobOfferPage = () => {
   return (
     <ReduxProvider>
       <ModeWrapper>
@@ -20,4 +20,4 @@ const JobOffer = () => {
   );
 };
 
-export default JobOffer;
+export default JobOfferPage;

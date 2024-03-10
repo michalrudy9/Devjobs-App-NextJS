@@ -7,7 +7,7 @@ import PrimaryButton from "../ui/common/buttons/PrimaryButton";
 import ModeWrapper from "../ui/common/ModeWrapper";
 import JobOfferItem from "../ui/common/JobOfferItem";
 
-const JobOffers = () => {
+const JobOffersPage = () => {
   return (
     <ReduxProvider>
       <ModeWrapper>
@@ -32,4 +32,4 @@ const JobOffers = () => {
   );
 };
 
-export default JobOffers;
+export default JobOffersPage;

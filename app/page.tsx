@@ -5,7 +5,7 @@ import Link from "next/link";
 import SearchBox from "./ui/search-box/SearchBox";
 import ReduxProvider from "@/store/reduxProvider";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <ReduxProvider>
       <main className="bg-mobile-pattern-header bg-no-repeat bg-cover h-screen p-5 lg:p-20">
@@ -29,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
