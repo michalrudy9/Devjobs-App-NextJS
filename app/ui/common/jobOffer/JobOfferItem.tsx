@@ -29,12 +29,16 @@ const JobOfferItem: React.FC<{ jobOffer: JobOfferHeader }> = ({ jobOffer }) => {
           <p className="text-dark-grey">
             {jobOffer.postedAt} . {jobOffer.contract}
           </p>
-          <h3>{jobOffer.position}</h3>
+          <h3 className="hover:text-dark-grey">
+            <Link
+              href={`/job-offers/${jobOffer.position.replaceAll(" ", "-")}`}
+            >
+              {jobOffer.position}
+            </Link>
+          </h3>
           <p className="text-dark-grey">{jobOffer.company}</p>
         </div>
-        <Link href="/" className="text-violet font-bold">
-          {jobOffer.location}
-        </Link>
+        <p className="text-violet font-bold">{jobOffer.location}</p>
       </section>
     </article>
   );
