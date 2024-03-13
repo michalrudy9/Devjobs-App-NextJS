@@ -9,8 +9,11 @@ const OfferHeader: React.FC<{
   logo: string;
   company: string;
   website: string;
-}> = ({ logo, company, website }) => {
+  bgColor: string;
+}> = ({ logo, company, website, bgColor }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
+
+  const src: string = "http://localhost:3000/" + logo;
 
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue text-white"
@@ -19,10 +22,16 @@ const OfferHeader: React.FC<{
   return (
     <header className={style}>
       <div
-        style={{ backgroundColor: "orange" }}
-        className="w-[3.125rem] h-[3.125rem] md:w-[8.75rem] md:h-[8.75rem] rounded-2xl md:rounded-none md:rounded-bl-md flex justify-center items-center translate-y-[-1.7rem] md:translate-y-0"
+        style={{ backgroundColor: bgColor }}
+        className="p-1 md:p-6 w-[3.125rem] h-[3.125rem] md:w-[8.75rem] md:h-[8.75rem] rounded-2xl md:rounded-none md:rounded-bl-md flex justify-center items-center translate-y-[-1.7rem] md:translate-y-0"
       >
-        <Image src={logo} alt={`${company} icon`} width={20} height={20} />
+        <Image
+          src={src}
+          alt={`${company} icon`}
+          width={0}
+          height={0}
+          className="w-full h-auto"
+        />
       </div>
       <div className="md:w-[calc(100%-8.75rem)] text-center md:text-left md:flex md:justify-between md:items-center md:px-10">
         <div>

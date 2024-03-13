@@ -22,6 +22,7 @@ const JobOfferPage = () => {
           logo={jobOffer!.logo}
           company={jobOffer!.company}
           website={jobOffer!.website}
+          bgColor={jobOffer!.logoBackground}
         />
         <OfferMain jobOffer={jobOffer!} />
         <OfferFooter position={jobOffer!.position} applay={jobOffer!.apply} />
