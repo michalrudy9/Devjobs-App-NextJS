@@ -1,7 +1,15 @@
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+
 import SecondaryButton from "@/app/ui/common/buttons/SecondaryButton";
 import { useAppSelector } from "@/store/hooks";
 
-const OfferHeader = () => {
+const OfferHeader: React.FC<{
+  logo: string;
+  company: string;
+  website: string;
+}> = ({ logo, company, website }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
 
   const style: string = `${
@@ -14,14 +22,16 @@ const OfferHeader = () => {
         style={{ backgroundColor: "orange" }}
         className="w-[3.125rem] h-[3.125rem] md:w-[8.75rem] md:h-[8.75rem] rounded-2xl md:rounded-none md:rounded-bl-md flex justify-center items-center translate-y-[-1.7rem] md:translate-y-0"
       >
-        {/* <Image src={} alt="Scoot icon" width={} height={} /> */}
+        <Image src={logo} alt={`${company} icon`} width={20} height={20} />
       </div>
       <div className="md:w-[calc(100%-8.75rem)] text-center md:text-left md:flex md:justify-between md:items-center md:px-10">
         <div>
-          <h4 className="text-xl">Scoot</h4>
-          <p className="text-dark-grey font-light mb-4">scoot.com</p>
+          <h4 className="text-xl">{company}</h4>
+          <p className="text-dark-grey font-light mb-4">{website}</p>
         </div>
-        <SecondaryButton text="Company Site" className="h-12" />
+        <Link href={website}>
+          <SecondaryButton text="Company Site" className="h-12" />
+        </Link>
       </div>
     </header>
   );

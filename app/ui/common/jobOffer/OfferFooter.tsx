@@ -1,7 +1,13 @@
+import Link from "next/link";
+
 import { useAppSelector } from "@/store/hooks";
 import PrimaryButton from "../buttons/PrimaryButton";
+import React from "react";
 
-const OfferFooter = () => {
+const OfferFooter: React.FC<{
+  position: string;
+  applay: string;
+}> = ({ position, applay }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue"
@@ -14,11 +20,16 @@ const OfferFooter = () => {
           <h4
             className={isLightMode ? "text-black" : "text-white" + " text-2xl"}
           >
-            Senior Software Engineer
+            {position}
           </h4>
           <p className="text-gray font-light">So Digital Inc.</p>
         </div>
-        <PrimaryButton text="Apply Now" className="w-full md:w-auto md:h-12" />
+        <Link href={applay}>
+          <PrimaryButton
+            text="Apply Now"
+            className="w-full md:w-auto md:h-12"
+          />
+        </Link>
       </div>
     </footer>
   );

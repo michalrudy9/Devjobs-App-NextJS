@@ -5,7 +5,7 @@ import SearchBox from "../ui/search-box/SearchBox";
 import ReduxProvider from "@/store/reduxProvider";
 import PrimaryButton from "../ui/common/buttons/PrimaryButton";
 import ModeWrapper from "../ui/common/ModeWrapper";
-import JobOfferList from "../ui/common/jobOffer/jobOfferList";
+import JobOfferList from "../ui/common/jobOffer/JobOfferList";
 
 const JobOffersPage = () => {
   return (
