@@ -11,22 +11,20 @@ const FilterBox: React.FC<{
 }> = ({ onClose }) => {
   return (
     <Modal onClose={onClose} className="w-4/5 rounded-lg p-6 md:hidden">
-      <form>
-        <InputText
-          src={iconLocation}
-          alt="Location icon"
-          name="locationMobile"
-          placeholder="Filter by location..."
-          className="pb-6"
-        />
-        <hr className="text-light-grey" />
-        <InputCheckbox
-          name="fullTimeMobile"
-          labelText="Full Time Only"
-          className="my-6"
-        />
-        <PrimaryButton text="Search" className="w-full" />
-      </form>
+      <InputText
+        src={iconLocation}
+        alt="Location icon"
+        name="locationMobile"
+        placeholder="Filter by location..."
+        className="pb-6"
+      />
+      <hr className="text-light-grey" />
+      <InputCheckbox
+        name="fullTimeMobile"
+        labelText="Full Time Only"
+        className="my-6"
+      />
+      <PrimaryButton type="submit" text="Search" className="w-full" />
     </Modal>
   );
 };

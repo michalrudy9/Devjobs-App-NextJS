@@ -15,7 +15,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-kumbh-sans">
         {children}
-        <div id="modal"></div>
       </body>
     </html>
   );
