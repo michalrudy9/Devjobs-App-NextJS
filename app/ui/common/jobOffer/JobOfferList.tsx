@@ -1,10 +1,11 @@
+import React from "react";
+
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 import JobOfferItem from "./JobOfferItem";
-import { getJobOfferHeaders } from "@/app/lib/actions";
 
-const JobOfferList = async () => {
-  const jobOffers: JobOfferHeader[] = getJobOfferHeaders();
-
+const JobOfferList: React.FC<{ jobOffers: JobOfferHeader[] }> = ({
+  jobOffers,
+}) => {
   return (
     <ul className="flex flex-wrap md:gap-x-4">
       {jobOffers.map((jobOffer: JobOfferHeader) => (
