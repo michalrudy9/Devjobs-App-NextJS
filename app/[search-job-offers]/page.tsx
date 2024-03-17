@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Suspense } from "react";
 
 import Header from "@/app/ui/common/Header";
@@ -7,11 +8,14 @@ import SearchBox from "../ui/search-box/SearchBox";
 import PrimaryButton from "../ui/common/buttons/PrimaryButton";
 import ModeWrapper from "../ui/common/ModeWrapper";
 import JobOfferList from "../ui/common/jobOffer/JobOfferList";
-import { getAllJobOfferHeaders } from "../lib/actions";
+import { findJobOffers } from "../lib/actions";
+import { JobOfferHeader } from "@/models/JobOfferHeader";
 
-const AllJobOffers = async () => {
-  const allJobOffersHeader = await getAllJobOfferHeaders();
-  return <JobOfferList jobOffers={allJobOffersHeader} />;
+const SearchedJobOffers = async () => {
+  const path = usePathname();
+  const jobOffers: JobOfferHeader[] = await findJobOffers(path);
+
+  return <JobOfferList jobOffers={jobOffers} />;
 };
 
 const JobOffersPage = () => {
@@ -22,7 +26,7 @@ const JobOffersPage = () => {
       </Header>
       <main className="mt-[5rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
         <Suspense fallback={<p>Loading...</p>}>
-          <AllJobOffers />
+          <SearchedJobOffers />
         </Suspense>
         <PrimaryButton text="Load More" className="my-10" />
       </main>
