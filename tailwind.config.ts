@@ -21,6 +21,9 @@ const config: Config = {
       "secondary-hover": "#C6C9F1",
       "secondary-dark-default": "#313641",
       "secondary-dark-hover": "#6b6e76",
+      "red-100": "#fee2e2",
+      "red-400": "#f87171",
+      "red-700": "#b91c1c",
     },
     extend: {
       fontFamily: {

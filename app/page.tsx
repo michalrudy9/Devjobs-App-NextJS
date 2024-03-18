@@ -13,7 +13,7 @@ const HomePage = () => {
       <p className="text-center lg:text-left font-bold text-very-dark-blue text-5xl my-20 leading-normal">
         Find your dream job in IT
       </p>
-      <SearchBox />
+      <SearchBox errorStyle="mt-4" />
       <Link
         href="/job-offers"
         className="text-light-grey mt-[7rem] text-xl flex justify-center"
