@@ -1,6 +1,16 @@
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 import { getAllJobOfferHeaders } from "../actions";
 
+export const getDataPath = (path: string): string[] => {
+  const elements = path.split("/");
+  const data = elements[elements.length - 1];
+  const searchedData: string[] = data
+    .split("-")
+    .map((item: string) => item.replace("%20", " "));
+
+  return searchedData;
+};
+
 export const findJobOffers = async (
   dataPath: string
 ): Promise<JobOfferHeader[]> => {

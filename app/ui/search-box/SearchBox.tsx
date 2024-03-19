@@ -11,6 +11,9 @@ import MobileInputs from "./MobileInputs";
 import DesktopInputs from "./DesktopInputs";
 import { submitSearchJobOffersForm } from "@/app/lib/actions";
 import ErrorBlock from "../common/ErrorBlock";
+import { getDataPath } from "@/app/lib/actions/filterJobOffersActions";
+import SearchLabel from "./SearchLabel";
+import { usePathname } from "next/navigation";
 
 const SearchBox: React.FC<{
   className?: string;
@@ -23,6 +26,8 @@ const SearchBox: React.FC<{
   const [state, formAction] = useFormState(submitSearchJobOffersForm, {
     message: "",
   });
+  const path = usePathname();
+  const dataPath: string[] = getDataPath(path);
 
   const closeModal = () => {
     setTimeout(() => {
@@ -46,10 +51,15 @@ const SearchBox: React.FC<{
         {width <= 768 && <MobileInputs />}
         {width > 768 && <DesktopInputs />}
       </form>
-      <div>
+      <div className="absolute flex gap-x-4 w-[calc(100%-2.5rem)] mt-[4.5rem]">
         {state.message && (
           <ErrorBlock message={state.message} className={errorStyle} />
         )}
+        {dataPath.map((item: string) => {
+          if (item !== "") {
+            return <SearchLabel key={item} text={item} />;
+          }
+        })}
       </div>
     </section>
   );
