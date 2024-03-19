@@ -7,7 +7,7 @@ import ModeWrapper from "@/app/ui/common/ModeWrapper";
 import OfferHeader from "@/app/ui/common/jobOffer/OfferHeader";
 import OfferMain from "@/app/ui/common/jobOffer/OfferMain";
 import OfferFooter from "@/app/ui/common/jobOffer/OfferFooter";
-import { getJobOffer } from "@/app/lib/actions";
+import { getJobOffer } from "@/app/lib/actions/jobOfferDetailsActions";
 
 const JobOfferPage = () => {
   const path = usePathname();
