@@ -4,18 +4,18 @@ import { usePathname } from "next/navigation";
 import { Suspense } from "react";
 
 import Header from "@/app/ui/common/Header";
-import SearchBox from "../ui/search-box/SearchBox";
-import PrimaryButton from "../ui/common/buttons/PrimaryButton";
-import ModeWrapper from "../ui/common/ModeWrapper";
-import JobOfferList from "../ui/common/jobOffer/JobOfferList";
-import { findJobOffers } from "../lib/actions/filterJobOffersActions";
+import SearchBox from "@/app/ui/search-box/SearchBox";
+import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
+import ModeWrapper from "@/app/ui/common/ModeWrapper";
+import JobOfferList from "@/app/ui/common/jobOffer/JobOfferList";
+import { findJobOffers } from "@/app/lib/actions/filterJobOffersActions";
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 
 const SearchedJobOffers = async () => {
   const path = usePathname();
   const jobOffers: JobOfferHeader[] = await findJobOffers(path);
 
-  return <JobOfferList jobOffers={jobOffers} />;
+  return <JobOfferList jobOffers={jobOffers} imagePath="../" />;
 };
 
 const JobOffersPage = () => {

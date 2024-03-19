@@ -4,7 +4,10 @@ import Link from "next/link";
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 import { useAppSelector } from "@/store/hooks";
 
-const JobOfferItem: React.FC<{ jobOffer: JobOfferHeader }> = ({ jobOffer }) => {
+const JobOfferItem: React.FC<{
+  jobOffer: JobOfferHeader;
+  imagePath?: string;
+}> = ({ jobOffer, imagePath }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
 
   const style: string = `${
@@ -18,7 +21,7 @@ const JobOfferItem: React.FC<{ jobOffer: JobOfferHeader }> = ({ jobOffer }) => {
         className="w-[3.125rem] h-[3.125rem] rounded-2xl flex justify-center items-center translate-y-[-1.7rem]"
       >
         <Image
-          src={jobOffer.logo}
+          src={jobOffer.logo.replace("./", imagePath ?? "./")}
           alt={`${jobOffer.company} icon`}
           width={30}
           height={30}
