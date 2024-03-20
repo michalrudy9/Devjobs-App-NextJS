@@ -18,9 +18,12 @@ const JobOffersPage = () => {
   return (
     <ModeWrapper>
       <Header>
-        <SearchBox className="translate-y-16" errorStyle="mt-[4.5rem]" />
+        <SearchBox
+          className="translate-y-16"
+          errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-5rem)] 2xl:w-[calc(100%-20rem)] mt-[4.25rem]"
+        />
       </Header>
-      <main className="mt-[6rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
+      <main className="mt-[7rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
         <Suspense fallback={<p>Loading...</p>}>
           <AllJobOffers />
         </Suspense>

@@ -11,14 +11,18 @@ import MobileInputs from "./MobileInputs";
 import DesktopInputs from "./DesktopInputs";
 import { submitSearchJobOffersForm } from "@/app/lib/actions";
 import ErrorBlock from "../common/ErrorBlock";
-import { getDataPath } from "@/app/lib/actions/filterJobOffersActions";
+import {
+  DataPath,
+  getDataPath,
+  removeSearchLabel,
+} from "@/app/lib/actions/filterJobOffersActions";
 import SearchLabel from "./SearchLabel";
 import { usePathname } from "next/navigation";
 
 const SearchBox: React.FC<{
   className?: string;
-  errorStyle?: string;
-}> = ({ className, errorStyle }) => {
+  errorWraper?: string;
+}> = ({ className, errorWraper }) => {
   const width = useWindowWidth();
   const isLightMode = useAppSelector((state) => state.mode.isLight);
   const isShowing: boolean = useAppSelector((state) => state.modal.isShowing);
@@ -27,13 +31,15 @@ const SearchBox: React.FC<{
     message: "",
   });
   const path = usePathname();
-  const dataPath: string[] = getDataPath(path);
+  const dataPath: DataPath[] = getDataPath(path);
 
   const closeModal = () => {
     setTimeout(() => {
       dispatch(toggle());
     }, 100);
   };
+
+  const errorWraperStyle: string = `absolute flex-row ${errorWraper}`;
 
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue"
@@ -51,15 +57,23 @@ const SearchBox: React.FC<{
         {width <= 768 && <MobileInputs />}
         {width > 768 && <DesktopInputs />}
       </form>
-      <div className="absolute flex gap-x-4 w-[calc(100%-2.5rem)] mt-[4.5rem]">
+      <div className={errorWraperStyle}>
         {state.message && (
-          <ErrorBlock message={state.message} className={errorStyle} />
+          <ErrorBlock message={state.message} className="my-1" />
         )}
-        {dataPath.map((item: string) => {
-          if (item !== "") {
-            return <SearchLabel key={item} text={item} />;
-          }
-        })}
+        <div className="flex gap-x-4 w-[calc(100%-2.5rem)]">
+          {dataPath.map((item: DataPath) => {
+            if (item.data !== "") {
+              return (
+                <SearchLabel
+                  key={item.id}
+                  text={item.data}
+                  onClick={() => removeSearchLabel(item.id, path)}
+                />
+              );
+            }
+          })}
+        </div>
       </div>
     </section>
   );
