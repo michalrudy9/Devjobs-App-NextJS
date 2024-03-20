@@ -1,8 +1,12 @@
+import { redirect } from "next/navigation";
+
 import data from "@/app/lib/data.json";
 import { JobOffer } from "@/models/JobOffer";
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 
-export const getJobOfferHeaders: () => JobOfferHeader[] = () => {
+export const getAllJobOfferHeaders: () => Promise<
+  JobOfferHeader[]
+> = async () => {
   return data.map((item: JobOffer) => {
     return {
       id: item.id,
@@ -17,18 +21,25 @@ export const getJobOfferHeaders: () => JobOfferHeader[] = () => {
   });
 };
 
-export const findJobOffer = (id: number): JobOffer | undefined => {
-  return data.find((item: JobOffer) => item.id === id);
-};
+const isInvalidText = (text: string): boolean => !text || text.trim() === "";
 
-export const getJobOffer = (path: string): JobOffer | undefined => {
-  const jobId = extractJobId(path);
-  const wantedJobOffer = findJobOffer(jobId);
-  return wantedJobOffer;
-};
+export const submitSearchJobOffersForm = async (
+  prevState: { message: string },
+  formData: FormData
+): Promise<{ message: string }> => {
+  const searchData = Object.fromEntries(formData) as { [k: string]: string };
 
-const extractJobId = (text: string): number => {
-  const elements = text.split("/");
-  const id = parseInt(elements[elements.length - 1]);
-  return id;
+  if (
+    isInvalidText(searchData["searchText"]) &&
+    isInvalidText(searchData["location"]) &&
+    !searchData["fullTime"]
+  ) {
+    return { message: "Please fill at least one field !" };
+  }
+
+  redirect(
+    `/searched-job-offers/${searchData["searchText"]}-${
+      searchData["location"] ?? ""
+    }-${searchData["fullTime"] ?? ""}`
+  );
 };
