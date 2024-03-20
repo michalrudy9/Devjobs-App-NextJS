@@ -1,19 +1,35 @@
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 import { getAllJobOfferHeaders } from "../actions";
 
-export const getDataPath = (path: string): string[] => {
-  const elements = path.split("/");
-  const data = elements[elements.length - 1];
-  const searchedData: string[] = data
+export type DataPath = {
+  id: number;
+  data: string;
+};
+
+const extractDataFromPath = (path: string) => {
+  const pathElements = path.split("/");
+  const subPath = pathElements[pathElements.length - 1];
+  const subPathElements = subPath
     .split("-")
     .map((item: string) => item.replace("%20", " "));
+  return subPathElements;
+};
 
-  return searchedData;
+export const getDataPath = (path: string): DataPath[] => {
+  const extractedDataPatch = extractDataFromPath(path);
+  return [
+    { id: 0, data: extractedDataPatch[0] ?? "" },
+    { id: 1, data: extractedDataPatch[1] ?? "" },
+    { id: 2, data: extractedDataPatch[2] ?? "" },
+  ];
 };
 
 export const findJobOffers = async (
   dataPath: string
 ): Promise<JobOfferHeader[]> => {
+  const splitedDataPath = dataPath.split("/");
+  dataPath = "/" + splitedDataPath[splitedDataPath.length - 1];
+
   const [searchString, locationString, fullTime] = dataPath.split("-");
 
   let searchText: string[] = searchString.split("%20");
@@ -45,4 +61,12 @@ export const findJobOffers = async (
   }
 
   return searchedResults;
+};
+
+export const getNewPath = (id: number, path: string): string => {
+  const extractedDataPatch: string[] = extractDataFromPath(path);
+  extractedDataPatch[id] = "";
+  return `/searched-job-offers/${extractedDataPatch[0] ?? ""}-${
+    extractedDataPatch[1] ?? ""
+  }-${extractedDataPatch[2] ?? ""}`;
 };

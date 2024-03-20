@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useFormState } from "react-dom";
+import { usePathname, useRouter } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggle } from "@/store/modalSlice";
@@ -14,15 +15,15 @@ import ErrorBlock from "../common/ErrorBlock";
 import {
   DataPath,
   getDataPath,
-  removeSearchLabel,
+  getNewPath,
 } from "@/app/lib/actions/filterJobOffersActions";
 import SearchLabel from "./SearchLabel";
-import { usePathname } from "next/navigation";
 
 const SearchBox: React.FC<{
   className?: string;
   errorWraper?: string;
-}> = ({ className, errorWraper }) => {
+  isAllJobOffers?: boolean;
+}> = ({ className, errorWraper, isAllJobOffers }) => {
   const width = useWindowWidth();
   const isLightMode = useAppSelector((state) => state.mode.isLight);
   const isShowing: boolean = useAppSelector((state) => state.modal.isShowing);
@@ -30,8 +31,15 @@ const SearchBox: React.FC<{
   const [state, formAction] = useFormState(submitSearchJobOffersForm, {
     message: "",
   });
-  const path = usePathname();
-  const dataPath: DataPath[] = getDataPath(path);
+  const router = useRouter();
+
+  let path: string = "";
+  let dataPath: DataPath[] = [];
+
+  if (!isAllJobOffers) {
+    path = usePathname();
+    dataPath = getDataPath(path);
+  }
 
   const closeModal = () => {
     setTimeout(() => {
@@ -44,6 +52,11 @@ const SearchBox: React.FC<{
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue"
   } rounded-lg p-5 md:gap-x-5 flex justify-between items-center ${className}`;
+
+  const removeSearchLabelHandler = (id: number, path: string) => {
+    const newPath: string = getNewPath(id, path);
+    router.push(newPath);
+  };
 
   return (
     <section className="">
@@ -68,7 +81,7 @@ const SearchBox: React.FC<{
                 <SearchLabel
                   key={item.id}
                   text={item.data}
-                  onClick={() => removeSearchLabel(item.id, path)}
+                  onClick={() => removeSearchLabelHandler(item.id, path)}
                 />
               );
             }

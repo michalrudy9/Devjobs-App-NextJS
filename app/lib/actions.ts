@@ -38,8 +38,8 @@ export const submitSearchJobOffersForm = async (
   }
 
   redirect(
-    `/${searchData["searchText"]}-${searchData["location"] ?? ""}-${
-      searchData["fullTime"] ?? ""
-    }`
+    `/searched-job-offers/${searchData["searchText"]}-${
+      searchData["location"] ?? ""
+    }-${searchData["fullTime"] ?? ""}`
   );
 };

@@ -21,6 +21,7 @@ const JobOffersPage = () => {
         <SearchBox
           className="translate-y-16"
           errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-5rem)] 2xl:w-[calc(100%-20rem)] mt-[4.25rem]"
+          isAllJobOffers={true}
         />
       </Header>
       <main className="mt-[7rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
