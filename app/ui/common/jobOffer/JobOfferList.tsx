@@ -1,7 +1,7 @@
 import React from "react";
 
 import { JobOfferHeader } from "@/models/JobOfferHeader";
-import JobOfferItem from "./JobOfferItem";
+import JobOfferItem from "@/app/ui/common/jobOffer/JobOfferItem";
 
 const JobOfferList: React.FC<{
   jobOffers: JobOfferHeader[];

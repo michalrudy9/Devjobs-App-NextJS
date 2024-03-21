@@ -1,8 +1,8 @@
 import Link from "next/link";
+import React from "react";
 
 import { useAppSelector } from "@/store/hooks";
-import PrimaryButton from "../buttons/PrimaryButton";
-import React from "react";
+import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 
 const OfferFooter: React.FC<{
   position: string;

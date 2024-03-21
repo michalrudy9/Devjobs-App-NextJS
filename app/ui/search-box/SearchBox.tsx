@@ -6,18 +6,18 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggle } from "@/store/modalSlice";
-import FilterBox from "./FilterBox";
+import FilterBox from "@/app/ui/search-box/FilterBox";
 import { useWindowWidth } from "@/app/lib/useWindowWidth";
-import MobileInputs from "./MobileInputs";
-import DesktopInputs from "./DesktopInputs";
+import MobileInputs from "@/app/ui/search-box/MobileInputs";
+import DesktopInputs from "@/app/ui/search-box/DesktopInputs";
 import { submitSearchJobOffersForm } from "@/app/lib/actions";
-import ErrorBlock from "../common/ErrorBlock";
+import ErrorBlock from "@/app/ui/common/ErrorBlock";
 import {
   DataPath,
   getDataPath,
   getNewPath,
 } from "@/app/lib/actions/filterJobOffersActions";
-import SearchLabel from "./SearchLabel";
+import SearchLabel from "@/app/ui/search-box/SearchLabel";
 
 const SearchBox: React.FC<{
   className?: string;

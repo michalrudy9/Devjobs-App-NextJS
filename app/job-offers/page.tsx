@@ -3,11 +3,11 @@
 import { Suspense } from "react";
 
 import Header from "@/app/ui/common/Header";
-import SearchBox from "../ui/search-box/SearchBox";
-import PrimaryButton from "../ui/common/buttons/PrimaryButton";
-import ModeWrapper from "../ui/common/ModeWrapper";
-import JobOfferList from "../ui/common/jobOffer/JobOfferList";
-import { getAllJobOfferHeaders } from "../lib/actions";
+import SearchBox from "@/app/ui/search-box/SearchBox";
+import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
+import ModeWrapper from "@/app/ui/common/ModeWrapper";
+import JobOfferList from "@/app/ui/common/jobOffer/JobOfferList";
+import { getAllJobOfferHeaders } from "@/app/lib/actions";
 
 const AllJobOffers = async () => {
   const allJobOffersHeader = await getAllJobOfferHeaders();

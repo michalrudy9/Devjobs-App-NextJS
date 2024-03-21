@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import SwitchMode from "./SwitchMode";
+import SwitchMode from "@/app/ui/common/SwitchMode";
 
 const Header: React.FC<{ children?: React.ReactNode; className?: string }> = ({
   children,

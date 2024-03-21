@@ -1,8 +1,8 @@
-import InputText from "../common/InputText";
+import InputText from "@/app/ui/common/InputText";
 import iconSearch from "@/public/desktop/icon-search.svg";
 import iconLocation from "@/public/desktop/icon-location.svg";
-import InputCheckbox from "../common/inputCheckbox/InputCheckbox";
-import PrimaryButton from "../common/buttons/PrimaryButton";
+import InputCheckbox from "@/app/ui/common/inputCheckbox/InputCheckbox";
+import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 
 const DesktopInput = () => {
   return (
