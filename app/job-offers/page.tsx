@@ -17,7 +17,7 @@ const AllJobOffers = async () => {
 const JobOffersPage = () => {
   return (
     <ModeWrapper>
-      <Header>
+      <Header wrapperStyle="translate-y-5">
         <SearchBox
           className="translate-y-16"
           errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-5rem)] 2xl:w-[calc(100%-20rem)] mt-[4.25rem]"
