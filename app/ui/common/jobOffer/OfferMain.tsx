@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 import { useAppSelector } from "@/store/hooks";
-import PrimaryButton from "../buttons/PrimaryButton";
+import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 import { JobOffer } from "@/models/JobOffer";
 
 const OfferMain: React.FC<{

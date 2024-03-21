@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import ImageButton from "./ImageButton";
+import ImageButton from "@/app/ui/search-box/ImageButton";
 import iconSearchWhite from "@/public/desktop/icon-search-white.svg";
 import iconFilter from "@/public/mobile/icon-filter.svg";
 import { toggle } from "@/store/modalSlice";

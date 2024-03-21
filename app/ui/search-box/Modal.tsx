@@ -1,6 +1,6 @@
 import React from "react";
-
 import { createPortal } from "react-dom";
+
 import { useAppSelector } from "@/store/hooks";
 
 const Modal: React.FC<{

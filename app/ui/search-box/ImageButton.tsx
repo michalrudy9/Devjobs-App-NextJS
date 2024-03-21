@@ -3,7 +3,7 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { MouseEventHandler } from "react";
 import { useFormStatus } from "react-dom";
 
-import Spinner from "../common/Spinner";
+import Spinner from "@/app/ui/common/Spinner";
 
 const ImageButton: React.FC<{
   src: string | StaticImport;

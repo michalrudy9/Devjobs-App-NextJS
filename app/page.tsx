@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import SearchBox from "./ui/search-box/SearchBox";
+import SearchBox from "@/app/ui/search-box/SearchBox";
 
 const HomePage = () => {
   return (
