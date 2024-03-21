@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { notFound, usePathname } from "next/navigation";
 
 import Header from "@/app/ui/common/Header";
 import ModeWrapper from "@/app/ui/common/ModeWrapper";
@@ -13,9 +13,13 @@ const JobOfferPage = () => {
   const path = usePathname();
   const jobOffer = getJobOffer(path);
 
+  if (!jobOffer) {
+    notFound();
+  }
+
   return (
     <ModeWrapper>
-      <Header className="h-[10rem]" />
+      <Header className="h-[10rem]" wrapperStyle="translate-y-5" />
       <OfferHeader
         logo={jobOffer!.logo}
         company={jobOffer!.company}
