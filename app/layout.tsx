@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import ReduxProvider from "@/store/reduxProvider";
+import QueryProvider from "@/components/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Devjobs",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-kumbh-sans">
-        <ReduxProvider>{children}</ReduxProvider>
+        <QueryProvider>
+          <ReduxProvider>{children}</ReduxProvider>
+        </QueryProvider>
       </body>
     </html>
   );

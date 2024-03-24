@@ -5,8 +5,7 @@ import JobOfferItem from "@/app/ui/common/jobOffer/JobOfferItem";
 
 const JobOfferList: React.FC<{
   jobOffers: JobOfferHeader[];
-  imagePath?: string;
-}> = ({ jobOffers, imagePath }) => {
+}> = ({ jobOffers }) => {
   return (
     <ul className="flex flex-wrap md:gap-x-4">
       {jobOffers.map((jobOffer: JobOfferHeader) => (
@@ -14,7 +13,7 @@ const JobOfferList: React.FC<{
           key={jobOffer.id}
           className="w-full md:w-[calc(50%-.5rem)] lg:w-[calc(33%-.5rem)] xl:w-[calc(25%-.8rem)]"
         >
-          <JobOfferItem jobOffer={jobOffer} imagePath={imagePath} />
+          <JobOfferItem jobOffer={jobOffer} />
         </li>
       ))}
     </ul>
