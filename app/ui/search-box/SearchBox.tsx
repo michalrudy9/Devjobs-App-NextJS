@@ -59,7 +59,7 @@ const SearchBox: React.FC<{
   };
 
   return (
-    <section className="">
+    <section>
       {isShowing && (
         <FilterBox
           onClose={() => dispatch(toggle())}
@@ -93,3 +93,6 @@ const SearchBox: React.FC<{
 };
 
 export default SearchBox;
+function useMediaQuery(arg0: number) {
+  throw new Error("Function not implemented.");
+}
