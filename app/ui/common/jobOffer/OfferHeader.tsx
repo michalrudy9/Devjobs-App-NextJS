@@ -13,7 +13,7 @@ const OfferHeader: React.FC<{
 }> = ({ logo, company, website, bgColor }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
 
-  const src: string = "http://localhost:3000/" + logo;
+  const src: string = "http://localhost:3000/logos/" + logo;
 
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue text-white"
