@@ -6,7 +6,7 @@ import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 import ModeWrapper from "@/app/ui/common/ModeWrapper";
 import JobOfferList from "@/app/ui/common/jobOffer/JobOfferList";
 import { useQuery } from "@tanstack/react-query";
-import { JobOfferHeader } from "@/models/JobOfferHeader";
+import { fetchJobOfferHeaders } from "@/app/lib/actions/jobOffersActions";
 
 const JobOffersPage = () => {
   const { data, isPending, isError, error } = useQuery({
@@ -31,17 +31,6 @@ const JobOffersPage = () => {
       </main>
     </ModeWrapper>
   );
-};
-
-const fetchJobOfferHeaders = async () => {
-  const response = await fetch("/api/all-job-offers");
-
-  if (!response.ok) {
-    throw new Error("An error occurred while fetching job offers!");
-  }
-
-  const data = (await response.json()) as JobOfferHeader[];
-  return data;
 };
 
 export default JobOffersPage;
