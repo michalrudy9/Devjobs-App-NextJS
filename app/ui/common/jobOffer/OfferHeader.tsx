@@ -4,16 +4,12 @@ import Link from "next/link";
 
 import SecondaryButton from "@/app/ui/common/buttons/SecondaryButton";
 import { useAppSelector } from "@/store/hooks";
+import { JobOffer } from "@/models/JobOffer";
 
-const OfferHeader: React.FC<{
-  logo: string;
-  company: string;
-  website: string;
-  bgColor: string;
-}> = ({ logo, company, website, bgColor }) => {
+const OfferHeader: React.FC<{ jobOffer: JobOffer }> = ({ jobOffer }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
 
-  const src: string = "http://localhost:3000/" + logo;
+  const src: string = "http://localhost:3000/logos/" + jobOffer.logo + ".svg";
 
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue text-white"
@@ -22,12 +18,12 @@ const OfferHeader: React.FC<{
   return (
     <header className={style}>
       <div
-        style={{ backgroundColor: bgColor }}
+        style={{ backgroundColor: jobOffer.logoBackground }}
         className="p-1 md:p-6 w-[3.125rem] h-[3.125rem] md:w-[8.75rem] md:h-[8.75rem] rounded-2xl md:rounded-none md:rounded-bl-md flex justify-center items-center translate-y-[-1.7rem] md:translate-y-0"
       >
         <Image
           src={src}
-          alt={`${company} icon`}
+          alt={`${jobOffer.company} icon`}
           width={0}
           height={0}
           className="w-full h-auto"
@@ -35,10 +31,10 @@ const OfferHeader: React.FC<{
       </div>
       <div className="md:w-[calc(100%-8.75rem)] text-center md:text-left md:flex md:justify-between md:items-center md:px-10">
         <div>
-          <h4 className="text-xl">{company}</h4>
-          <p className="text-dark-grey font-light mb-4">{website}</p>
+          <h4 className="text-xl">{jobOffer.company}</h4>
+          <p className="text-dark-grey font-light mb-4">{jobOffer.website}</p>
         </div>
-        <Link href={website}>
+        <Link href={jobOffer.website}>
           <SecondaryButton text="Company Site" className="h-12" />
         </Link>
       </div>
