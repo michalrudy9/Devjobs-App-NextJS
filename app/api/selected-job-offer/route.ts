@@ -6,7 +6,6 @@ type RequestData = { id: number };
 
 export const POST = async (request: Request) => {
   const requestData = (await request.json()) as RequestData;
-
   let data: QueryResult<QueryResultRow>[] = [];
 
   try {

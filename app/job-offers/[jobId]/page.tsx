@@ -31,8 +31,6 @@ const JobOfferPage = () => {
     queryFn: () => fetchJobOffer(extractedId),
   });
 
-  console.log(jobOffer);
-
   return (
     <ModeWrapper>
       <Header className="h-[10rem]" wrapperStyle="translate-y-5" />
@@ -40,12 +38,7 @@ const JobOfferPage = () => {
       {isError && <p>{error.message}</p>}
       {!isPending && !isError && (
         <>
-          <OfferHeader
-            logo={jobOffer.logo}
-            company={jobOffer.company}
-            website={jobOffer.website}
-            bgColor={jobOffer.logoBackground}
-          />
+          <OfferHeader jobOffer={jobOffer} />
           <OfferMain jobOffer={jobOffer} />
           <OfferFooter position={jobOffer.position} applay={jobOffer.apply} />
         </>
