@@ -10,12 +10,12 @@ import FilterBox from "@/app/ui/search-box/FilterBox";
 import { useWindowWidth } from "@/app/lib/useWindowWidth";
 import MobileInputs from "@/app/ui/search-box/MobileInputs";
 import DesktopInputs from "@/app/ui/search-box/DesktopInputs";
-import { submitSearchJobOffersForm } from "@/app/lib/actions";
+import { submitSearchJobOffersForm } from "@/app/lib/actions/filterJobOffersActions";
 import ErrorBlock from "@/app/ui/common/ErrorBlock";
 import {
   DataPath,
   getDataPath,
-  getNewPath,
+  removeSearchLabelItem,
 } from "@/app/lib/actions/filterJobOffersActions";
 import SearchLabel from "@/app/ui/search-box/SearchLabel";
 
@@ -24,14 +24,14 @@ const SearchBox: React.FC<{
   errorWraper?: string;
   isAllJobOffers?: boolean;
 }> = ({ className, errorWraper, isAllJobOffers }) => {
+  const router = useRouter();
   const width = useWindowWidth();
-  const isLightMode = useAppSelector((state) => state.mode.isLight);
-  const isShowing: boolean = useAppSelector((state) => state.modal.isShowing);
   const dispatch = useAppDispatch();
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
+  const isShowing = useAppSelector((state) => state.modal.isShowing);
   const [state, formAction] = useFormState(submitSearchJobOffersForm, {
     message: "",
   });
-  const router = useRouter();
 
   let path: string = "";
   let dataPath: DataPath[] = [];
@@ -47,22 +47,20 @@ const SearchBox: React.FC<{
     }, 100);
   };
 
-  const errorWraperStyle: string = `absolute flex-row ${errorWraper}`;
+  const errorWraperStyle: string = `absolute ${errorWraper}`;
 
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue"
   } rounded-lg p-5 md:gap-x-5 flex justify-between items-center ${className}`;
 
-  const removeSearchLabelHandler = (id: number, path: string) => {
-    const newPath: string = getNewPath(id, path);
-    router.push(newPath);
-  };
-
   return (
-    <section>
+    <section className="row-start-2 row-end-4 col-start-1 col-end-2">
       {isShowing && (
         <FilterBox
-          onClose={() => dispatch(toggle())}
+          onClose={() => {
+            dispatch(toggle());
+            document.body.style.overflow = "visible";
+          }}
           closeAfterSubmit={closeModal}
         />
       )}
@@ -81,7 +79,7 @@ const SearchBox: React.FC<{
                 <SearchLabel
                   key={item.id}
                   text={item.data}
-                  onClick={() => removeSearchLabelHandler(item.id, path)}
+                  onClick={() => removeSearchLabelItem(item.id, path, router)}
                 />
               );
             }
@@ -93,6 +91,3 @@ const SearchBox: React.FC<{
 };
 
 export default SearchBox;
-function useMediaQuery(arg0: number) {
-  throw new Error("Function not implemented.");
-}

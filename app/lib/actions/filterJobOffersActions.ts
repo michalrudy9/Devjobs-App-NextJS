@@ -1,3 +1,6 @@
+import { redirect } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+
 import { JobOfferHeader } from "@/models/JobOfferHeader";
 import { FilterData } from "@/models/FilterData";
 
@@ -42,7 +45,7 @@ export const fetchFilteredJobOffers = async (
 
 // SearchBox
 
-const extractDataFromPath1 = (path: string) => {
+const extractData = (path: string) => {
   const pathElements = path.split("/");
   const subPath = pathElements[pathElements.length - 1];
   const subPathElements = subPath
@@ -52,7 +55,7 @@ const extractDataFromPath1 = (path: string) => {
 };
 
 export const getDataPath = (path: string): DataPath[] => {
-  const extractedDataPatch = extractDataFromPath1(path);
+  const extractedDataPatch = extractData(path);
   return [
     { id: 0, data: extractedDataPatch[0] ?? "" },
     { id: 1, data: extractedDataPatch[1] ?? "" },
@@ -60,10 +63,42 @@ export const getDataPath = (path: string): DataPath[] => {
   ];
 };
 
-export const getNewPath = (id: number, path: string): string => {
-  const extractedDataPatch: string[] = extractDataFromPath1(path);
+const getNewPath = (id: number, path: string): string => {
+  const extractedDataPatch: string[] = extractData(path);
   extractedDataPatch[id] = "";
   return `/searched-job-offers/${extractedDataPatch[0] ?? ""}-${
     extractedDataPatch[1] ?? ""
   }-${extractedDataPatch[2] ?? ""}`;
+};
+
+export const removeSearchLabelItem = (
+  id: number,
+  path: string,
+  router: AppRouterInstance
+) => {
+  const newPath: string = getNewPath(id, path);
+  router.push(newPath);
+};
+
+const isInvalidText = (text: string): boolean => !text || text.trim() === "";
+
+export const submitSearchJobOffersForm = async (
+  prevState: { message: string },
+  formData: FormData
+): Promise<{ message: string }> => {
+  const searchData = Object.fromEntries(formData) as { [k: string]: string };
+
+  if (
+    isInvalidText(searchData["searchText"]) &&
+    isInvalidText(searchData["location"]) &&
+    !searchData["fullTime"]
+  ) {
+    return { message: "Please fill at least one field !" };
+  }
+
+  redirect(
+    `/searched-job-offers/${searchData["searchText"]}-${
+      searchData["location"] ?? ""
+    }-${searchData["fullTime"] ?? ""}`
+  );
 };

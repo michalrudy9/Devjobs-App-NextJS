@@ -12,12 +12,12 @@ const Modal: React.FC<{
 
   const style: string = `${
     !isLightMode && "bg-very-dark-blue"
-  } ${className} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`;
+  } ${className} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20`;
 
   return createPortal(
     <>
       <div
-        className="fixed top-0 left-0 w-full h-screen bg-midnight/50 flex justify-center items-center"
+        className="fixed top-0 left-0 w-full h-screen z-10 bg-midnight/50 flex justify-center items-center"
         onClick={onClose}
       />
       <dialog open className={style}>
