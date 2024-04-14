@@ -9,7 +9,12 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchJobOfferHeaders } from "@/app/lib/actions/jobOffersActions";
 
 const JobOffersPage = () => {
-  const { data, isPending, isError, error } = useQuery({
+  const {
+    data: jobOffers,
+    isPending,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["jobOffers"],
     queryFn: fetchJobOfferHeaders,
   });
@@ -26,7 +31,7 @@ const JobOffersPage = () => {
       <main className="mt-[7rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
         {isPending && <p>Loading...</p>}
         {isError ? <p>{error.message}</p> : undefined}
-        {!isPending && !isError && <JobOfferList jobOffers={data} />}
+        {!isPending && !isError && <JobOfferList jobOffers={jobOffers} />}
         <PrimaryButton text="Load More" className="my-10" />
       </main>
     </ModeWrapper>
