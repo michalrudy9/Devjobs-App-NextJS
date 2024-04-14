@@ -13,6 +13,8 @@ const JobOfferItem: React.FC<{
     isLightMode ? "bg-white text-black" : "bg-very-dark-blue text-white"
   } rounded-md px-8 pb-8 mt-14 md:h-[18rem] text-left`;
 
+  const src: string = "http://localhost:3000/logos/" + jobOffer.logo + ".svg";
+
   return (
     <article className={style}>
       <div
@@ -20,7 +22,7 @@ const JobOfferItem: React.FC<{
         className="w-[3.125rem] h-[3.125rem] rounded-2xl flex justify-center items-center translate-y-[-1.7rem]"
       >
         <Image
-          src={`./logos/${jobOffer.logo}.svg`}
+          src={src}
           alt={`${jobOffer.company} icon`}
           width={0}
           height={0}
