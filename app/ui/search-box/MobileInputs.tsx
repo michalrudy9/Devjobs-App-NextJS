@@ -5,8 +5,8 @@ import iconFilter from "@/public/mobile/icon-filter.svg";
 import { toggle } from "@/store/modalSlice";
 
 const MobileInputs = () => {
-  const isLightMode = useAppSelector((state) => state.mode.isLight);
   const dispatch = useAppDispatch();
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
 
   const searchTextMobileStyle: string = `${
     !isLightMode && "bg-very-dark-blue text-white"
@@ -26,7 +26,10 @@ const MobileInputs = () => {
           src={iconFilter}
           alt="Filter icon"
           type="button"
-          onClick={() => dispatch(toggle())}
+          onClick={() => {
+            dispatch(toggle());
+            document.body.style.overflow = "hidden";
+          }}
         />
         <ImageButton
           src={iconSearchWhite}

@@ -21,14 +21,14 @@ const JobOffersPage = () => {
 
   return (
     <ModeWrapper>
-      <Header wrapperStyle="translate-y-5">
+      <Header>
         <SearchBox
-          className="translate-y-16"
-          errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-5rem)] 2xl:w-[calc(100%-20rem)] mt-[4.25rem]"
+          className="m-5"
+          errorWraper="w-full px-5 lg:px-5 2xl:px-[10rem]"
           isAllJobOffers={true}
         />
       </Header>
-      <main className="mt-[7rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
+      <main className="mt-[5rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
         {isPending && <p>Loading...</p>}
         {isError ? <p>{error.message}</p> : undefined}
         {!isPending && !isError && <JobOfferList jobOffers={jobOffers} />}
