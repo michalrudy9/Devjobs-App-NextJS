@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import SearchBox from "@/app/ui/search-box/SearchBox";
 import { fetchAmountOfJobOffers } from "@/app/lib/actions/actions";
 import { AmountOffers } from "@/models/response/AmountOffers";
+import AllJobOffersLink from "@/app/ui/common/AllJobOffersLink";
 
 const HomePage = () => {
   const { data, isPending, isError } = useQuery<AmountOffers>({
@@ -24,14 +25,7 @@ const HomePage = () => {
         Find your dream job in IT
       </p>
       <SearchBox errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-10rem)]" />
-      <Link
-        href="/job-offers"
-        className="text-light-grey mt-[7rem] text-xl flex justify-center"
-      >
-        {isPending && <p>Loading...</p>}
-        {isError && <p>All job offers (all)</p>}
-        {!isPending && !isError && <p>All job offers ({data.amount})</p>}
-      </Link>
+      <AllJobOffersLink isPending={isPending} isError={isError} data={data!} />
     </main>
   );
 };
