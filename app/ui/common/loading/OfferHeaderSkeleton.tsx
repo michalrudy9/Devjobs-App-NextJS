@@ -11,11 +11,16 @@ const OfferHeaderSkeleton = () => {
   return (
     <div className={style}>
       <div
-        className={`${
-          !isLightMode && "bg-secondary-dark-default"
-        } w-[3.125rem] h-[3.125rem] md:w-[8.75rem] md:h-[8.75rem] rounded-2xl md:rounded-none md:rounded-bl-md flex justify-center items-center translate-y-[-1.7rem] md:translate-y-0`}
+        className={
+          "w-[3.125rem] h-[3.125rem] md:w-[8.75rem] md:h-[8.75rem] rounded-2xl md:rounded-none md:rounded-bl-md flex justify-center items-center translate-y-[-1.7rem] md:translate-y-0"
+        }
       >
-        <Skeleton variant="rounded" width="100%" height="100%" />
+        <Skeleton
+          variant="rounded"
+          width="100%"
+          height="100%"
+          className={`${!isLightMode && "bg-secondary-dark-default"}`}
+        />
       </div>
       <div className="md:w-[calc(100%-8.75rem)] text-center md:text-left md:flex md:justify-between md:items-center md:px-10">
         <div className="flex flex-col items-center md:items-start">
