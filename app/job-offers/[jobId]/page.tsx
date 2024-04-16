@@ -13,6 +13,7 @@ import {
   extractId,
   fetchJobOffer,
 } from "@/app/lib/actions/jobOfferDetailsActions";
+import OfferMainSkeleton from "@/app/ui/common/loading/OfferMainSkeleton";
 
 const JobOfferPage = () => {
   const path = usePathname();
@@ -38,6 +39,7 @@ const JobOfferPage = () => {
       {isPending && (
         <>
           <OfferHeaderSkeleton />
+          <OfferMainSkeleton />
         </>
       )}
       {isError && <p>{error.message}</p>}
