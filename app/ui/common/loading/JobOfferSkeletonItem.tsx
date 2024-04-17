@@ -25,6 +25,7 @@ const JobOfferSkeletonItem = () => {
               animation="wave"
               width={80}
               height={15}
+              className={`${!isLightMode && "bg-secondary-dark-default"}`}
             />
             .
             <Skeleton
@@ -32,6 +33,7 @@ const JobOfferSkeletonItem = () => {
               animation="wave"
               width={100}
               height={15}
+              className={`${!isLightMode && "bg-secondary-dark-default"}`}
             />
           </div>
           <Skeleton
@@ -39,10 +41,23 @@ const JobOfferSkeletonItem = () => {
             animation="wave"
             width={260}
             height={20}
+            className={`${!isLightMode && "bg-secondary-dark-default"}`}
           />
-          <Skeleton variant="rounded" animation="wave" width={90} height={15} />
+          <Skeleton
+            variant="rounded"
+            animation="wave"
+            width={90}
+            height={15}
+            className={`${!isLightMode && "bg-secondary-dark-default"}`}
+          />
         </div>
-        <Skeleton variant="rounded" animation="wave" width={180} height={15} />
+        <Skeleton
+          variant="rounded"
+          animation="wave"
+          width={180}
+          height={15}
+          className={`${!isLightMode && "bg-secondary-dark-default"}`}
+        />
       </div>
     </div>
   );
