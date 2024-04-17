@@ -8,10 +8,12 @@ import ModeWrapper from "@/app/ui/common/ModeWrapper";
 import OfferHeader from "@/app/ui/common/jobOffer/OfferHeader";
 import OfferMain from "@/app/ui/common/jobOffer/OfferMain";
 import OfferFooter from "@/app/ui/common/jobOffer/OfferFooter";
+import OfferHeaderSkeleton from "@/app/ui/common/loading/OfferHeaderSkeleton";
 import {
   extractId,
   fetchJobOffer,
 } from "@/app/lib/actions/jobOfferDetailsActions";
+import OfferMainSkeleton from "@/app/ui/common/loading/OfferMainSkeleton";
 
 const JobOfferPage = () => {
   const path = usePathname();
@@ -34,7 +36,12 @@ const JobOfferPage = () => {
   return (
     <ModeWrapper>
       <Header className="h-[10rem]" wrapperStyle="translate-y-5" />
-      {isPending && <p>Loading...</p>}
+      {isPending && (
+        <>
+          <OfferHeaderSkeleton />
+          <OfferMainSkeleton />
+        </>
+      )}
       {isError && <p>{error.message}</p>}
       {!isPending && !isError && (
         <>

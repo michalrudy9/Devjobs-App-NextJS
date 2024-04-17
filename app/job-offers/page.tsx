@@ -1,12 +1,14 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
+
 import Header from "@/app/ui/common/Header";
 import SearchBox from "@/app/ui/search-box/SearchBox";
 import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 import ModeWrapper from "@/app/ui/common/ModeWrapper";
 import JobOfferList from "@/app/ui/common/jobOffer/JobOfferList";
-import { useQuery } from "@tanstack/react-query";
 import { fetchJobOfferHeaders } from "@/app/lib/actions/jobOffersActions";
+import JobOfferSkeletonList from "@/app/ui/common/loading/JobOfferSkeletonList";
 
 const JobOffersPage = () => {
   const {
@@ -29,7 +31,7 @@ const JobOffersPage = () => {
         />
       </Header>
       <main className="mt-[5rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
-        {isPending && <p>Loading...</p>}
+        {isPending && <JobOfferSkeletonList />}
         {isError ? <p>{error.message}</p> : undefined}
         {!isPending && !isError && <JobOfferList jobOffers={jobOffers} />}
         <PrimaryButton text="Load More" className="my-10" />

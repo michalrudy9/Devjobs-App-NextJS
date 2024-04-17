@@ -8,11 +8,12 @@ import SearchBox from "@/app/ui/search-box/SearchBox";
 import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 import ModeWrapper from "@/app/ui/common/ModeWrapper";
 import JobOfferList from "@/app/ui/common/jobOffer/JobOfferList";
+import { JobOfferHeader } from "@/models/JobOfferHeader";
+import JobOfferSkeletonList from "@/app/ui/common/loading/JobOfferSkeletonList";
 import {
   extractDataFromPath,
   fetchFilteredJobOffers,
 } from "@/app/lib/actions/filterJobOffersActions";
-import { JobOfferHeader } from "@/models/JobOfferHeader";
 
 const JobOffersPage = () => {
   const path = usePathname();
@@ -37,7 +38,7 @@ const JobOffersPage = () => {
         />
       </Header>
       <main className="mt-[5rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
-        {isPending && <p>Loading...</p>}
+        {isPending && <JobOfferSkeletonList />}
         {isError && <p>{error.message}</p>}
         {!isPending && !isError && jobOffers.length < 1 && (
           <p>Nothing searched!</p>
