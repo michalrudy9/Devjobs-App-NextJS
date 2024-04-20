@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { Alert } from "@mui/material";
 
 import Header from "@/app/ui/common/Header";
 import SearchBox from "@/app/ui/search-box/SearchBox";
@@ -22,7 +23,7 @@ const JobOffersPage = () => {
   });
 
   return (
-    <ModeWrapper>
+    <ModeWrapper className={`${isError && "h-screen"}`}>
       <Header>
         <SearchBox
           className="m-5"
@@ -30,11 +31,21 @@ const JobOffersPage = () => {
           isAllJobOffers={true}
         />
       </Header>
-      <main className="mt-[5rem] px-5 lg:px-10 2xl:px-[10rem] text-center">
+      <main
+        className={`${
+          !isError
+            ? "mt-[5rem]"
+            : "h-[calc(100%-12.188rem)] flex justify-center items-center"
+        } px-5 lg:px-10 2xl:px-[10rem] text-center`}
+      >
         {isPending && <JobOfferSkeletonList />}
-        {isError ? <p>{error.message}</p> : undefined}
-        {!isPending && !isError && <JobOfferList jobOffers={jobOffers} />}
-        <PrimaryButton text="Load More" className="my-10" />
+        {isError && <Alert severity="error">{error.message}</Alert>}
+        {!isPending && !isError && (
+          <>
+            <JobOfferList jobOffers={jobOffers} />
+            <PrimaryButton text="Load More" className="my-10" />
+          </>
+        )}
       </main>
     </ModeWrapper>
   );
