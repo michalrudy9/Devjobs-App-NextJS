@@ -2,6 +2,7 @@
 
 import { notFound, usePathname } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
+import { Alert } from "@mui/material";
 
 import Header from "@/app/ui/common/Header";
 import ModeWrapper from "@/app/ui/common/ModeWrapper";
@@ -34,7 +35,7 @@ const JobOfferPage = () => {
   });
 
   return (
-    <ModeWrapper>
+    <ModeWrapper className={`${isError && "h-screen"}`}>
       <Header className="h-[10rem]" wrapperStyle="translate-y-5" />
       {isPending && (
         <>
@@ -42,7 +43,11 @@ const JobOfferPage = () => {
           <OfferMainSkeleton />
         </>
       )}
-      {isError && <p>{error.message}</p>}
+      {isError && (
+        <div className="h-[calc(100%-10rem)] flex justify-center items-center">
+          <Alert severity="error">{error.message}</Alert>
+        </div>
+      )}
       {!isPending && !isError && (
         <>
           <OfferHeader jobOffer={jobOffer} />

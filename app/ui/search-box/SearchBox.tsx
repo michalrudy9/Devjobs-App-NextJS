@@ -3,6 +3,7 @@
 import React from "react";
 import { useFormState } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
+import { Alert } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggle } from "@/store/modalSlice";
@@ -11,13 +12,12 @@ import { useWindowWidth } from "@/app/lib/useWindowWidth";
 import MobileInputs from "@/app/ui/search-box/MobileInputs";
 import DesktopInputs from "@/app/ui/search-box/DesktopInputs";
 import { submitSearchJobOffersForm } from "@/app/lib/actions/filterJobOffersActions";
-import ErrorBlock from "@/app/ui/common/ErrorBlock";
+import SearchLabel from "@/app/ui/search-box/SearchLabel";
 import {
   DataPath,
   getDataPath,
   removeSearchLabelItem,
 } from "@/app/lib/actions/filterJobOffersActions";
-import SearchLabel from "@/app/ui/search-box/SearchLabel";
 
 const SearchBox: React.FC<{
   className?: string;
@@ -70,7 +70,9 @@ const SearchBox: React.FC<{
       </form>
       <div className={errorWraperStyle}>
         {state.message && (
-          <ErrorBlock message={state.message} className="my-1" />
+          <Alert severity="error" className="my-1">
+            {state.message}
+          </Alert>
         )}
         <div className="flex gap-x-4 w-[calc(100%-2.5rem)]">
           {dataPath.map((item: DataPath) => {
