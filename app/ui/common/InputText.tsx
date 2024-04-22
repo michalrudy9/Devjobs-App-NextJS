@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { motion } from "framer-motion";
 
+import { useAnimateInputText } from "@/app/lib/useAnimateInput";
 import { useAppSelector } from "@/store/hooks";
 
 const InputText: React.FC<{
@@ -11,20 +13,40 @@ const InputText: React.FC<{
   placeholder?: string;
   className?: string;
 }> = ({ src, alt, name, placeholder, className }) => {
-  const isLightMode = useAppSelector((state) => state.mode.isLight);
+  const { text: animateText, animationTime, replaceAfterTime, span, input} = useAppSelector((state) => state.inputText);
+  
+  const { label: labelStyle, input: inputStyle } = useAnimateInputText(animationTime, replaceAfterTime);
+
   const style: string = `flex w-full gap-x-5 ${className}`;
-  const inputStyle: string = `w-full outline-none ${
-    isLightMode ? "bg-white" : "bg-very-dark-blue text-white"
-  }`;
+
+  const text = animateText.split(" ");
 
   return (
     <div className={style}>
       <Image src={src} alt={alt} className="w-auto h-full" />
-      <input
+      <label className={labelStyle}>
+        {text.map((element, i) => (
+          <motion.span
+            key={i}
+            initial={span.initial}
+            animate={span.animate}
+            transition={{
+              duration: span.transition.duration,
+              delay: i / span.transition.delay,
+            }}
+          >
+            {element}{" "}
+          </motion.span>
+        ))}
+      </label>
+      <motion.input
         type="text"
         name={name}
         placeholder={placeholder}
         className={inputStyle}
+        initial={input.initial}
+        animate={input.animate}
+        transition={input.transition}
       />
     </div>
   );
