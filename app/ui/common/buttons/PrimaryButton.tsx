@@ -14,10 +14,8 @@ const PrimaryButton: React.FC<{
       rotate: [0, -10, 0, 10, 0],
       transition: {
         delay: 3,
-        duration: 0.3,
+        duration: 0.5,
         ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
-        repeatDelay: 1,
       },
     },
     whileHover: { scale: 1.1 },
