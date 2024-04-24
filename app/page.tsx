@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 
 import SearchBox from "@/app/ui/search-box/SearchBox";
 import { fetchAmountOfJobOffers } from "@/app/lib/actions/actions";
@@ -21,10 +22,22 @@ const HomePage = () => {
           <Link href="/">devjobs</Link>
         </h1>
       </header>
-      <p className="text-center lg:text-left font-bold text-very-dark-blue text-5xl my-20 leading-normal">
+      <motion.p
+        className="text-center lg:text-left font-bold text-very-dark-blue text-5xl my-20 leading-normal"
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+      >
         Find your dream job in IT
-      </p>
-      <SearchBox errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-10rem)]" />
+      </motion.p>
+      <SearchBox
+        errorWraper="w-[calc(100%-2.5rem)] lg:w-[calc(100%-10rem)]"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        animatedSubmmit
+        animatedSearchText
+        animatedLocation
+      />
       <AllJobOffersLink isPending={isPending} isError={isError} data={data!} />
     </main>
   );
