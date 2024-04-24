@@ -8,7 +8,10 @@ type InputTextStyle = {
   input: string;
 };
 
-export const useAnimateInputText = (): InputTextStyle => {
+export const useAnimateInputText = (
+  animationTime: number,
+  replaceAfterTime: number
+): InputTextStyle => {
   const [inputStyle, setInputStyle] = useState<InputTextStyle>({
     label: "text-gray",
     input: "hidden",
@@ -23,7 +26,7 @@ export const useAnimateInputText = (): InputTextStyle => {
           input: prevValue.input,
         };
       });
-    }, 3000);
+    }, animationTime);
 
     setTimeout(() => {
       setInputStyle((prevValue: InputTextStyle) => {
@@ -34,7 +37,7 @@ export const useAnimateInputText = (): InputTextStyle => {
           }`,
         };
       });
-    }, 3500);
+    }, replaceAfterTime);
   }, []);
 
   return { ...inputStyle };
