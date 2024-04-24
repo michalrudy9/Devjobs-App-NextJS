@@ -3,8 +3,9 @@
 import React from "react";
 import { useFormState } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
-import { Alert } from "@mui/material";
+import { motion } from "framer-motion";
 
+import AlertBlock from "@/app/ui/common/AlertBlock";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggle } from "@/store/modalSlice";
 import FilterBox from "@/app/ui/search-box/FilterBox";
@@ -23,7 +24,23 @@ const SearchBox: React.FC<{
   className?: string;
   errorWraper?: string;
   isAllJobOffers?: boolean;
-}> = ({ className, errorWraper, isAllJobOffers }) => {
+  initial?: {};
+  animate?: {};
+  transition?: {};
+  animatedSubmmit?: boolean;
+  animatedSearchText?: boolean;
+  animatedLocation?: boolean;
+}> = ({
+  className,
+  errorWraper,
+  isAllJobOffers,
+  initial,
+  animate,
+  transition,
+  animatedSubmmit,
+  animatedSearchText,
+  animatedLocation,
+}) => {
   const router = useRouter();
   const width = useWindowWidth();
   const dispatch = useAppDispatch();
@@ -54,7 +71,12 @@ const SearchBox: React.FC<{
   } rounded-lg p-5 md:gap-x-5 flex justify-between items-center ${className}`;
 
   return (
-    <section className="row-start-2 row-end-4 col-start-1 col-end-2">
+    <motion.section
+      className="row-start-2 row-end-4 col-start-1 col-end-2"
+      initial={initial}
+      animate={animate}
+      transition={transition}
+    >
       {isShowing && (
         <FilterBox
           onClose={() => {
@@ -66,13 +88,19 @@ const SearchBox: React.FC<{
       )}
       <form action={formAction} className={style}>
         {width <= 768 && <MobileInputs />}
-        {width > 768 && <DesktopInputs />}
+        {width > 768 && (
+          <DesktopInputs
+            animatedSubmmit={animatedSubmmit}
+            animatedSearchText={animatedSearchText}
+            animatedLocation={animatedLocation}
+          />
+        )}
       </form>
       <div className={errorWraperStyle}>
         {state.message && (
-          <Alert severity="error" className="my-1">
+          <AlertBlock severity="error" className="my-1">
             {state.message}
-          </Alert>
+          </AlertBlock>
         )}
         <div className="flex gap-x-4 w-[calc(100%-2.5rem)]">
           {dataPath.map((item: DataPath) => {
@@ -88,7 +116,7 @@ const SearchBox: React.FC<{
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
