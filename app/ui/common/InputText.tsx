@@ -4,6 +4,7 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { motion } from "framer-motion";
 
 import { useAnimateInputText } from "@/app/lib/useAnimateInput";
+import { useAppSelector } from "@/store/hooks";
 
 const InputText: React.FC<{
   src: string | StaticImport;
@@ -24,9 +25,10 @@ const InputText: React.FC<{
   delay,
   animated,
 }) => {
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
   const { label: labelStyle, input: inputStyle } = useAnimateInputText(
-    3500,
-    4000
+    animated ? 3500 : 0,
+    animated ? 4000 : 0
   );
 
   const style: string = `flex w-full gap-x-5 ${className}`;
@@ -61,7 +63,9 @@ const InputText: React.FC<{
         type="text"
         name={name}
         placeholder={placeholder}
-        className={inputStyle}
+        className={`${inputStyle} ${
+          isLightMode ? " bg-white" : " bg-very-dark-blue text-white"
+        }`}
         variants={animation}
         initial={animated && "initial"}
         animate={animated && "animate"}

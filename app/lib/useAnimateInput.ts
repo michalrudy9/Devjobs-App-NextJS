@@ -1,6 +1,5 @@
 "use client";
 
-import { useAppSelector } from "@/store/hooks";
 import { useEffect, useState } from "react";
 
 type InputTextStyle = {
@@ -16,7 +15,6 @@ export const useAnimateInputText = (
     label: "text-gray",
     input: "hidden",
   });
-  const isLightMode = useAppSelector((state) => state.mode.isLight);
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,9 +30,7 @@ export const useAnimateInputText = (
       setInputStyle((prevValue: InputTextStyle) => {
         return {
           label: "hidden",
-          input: `w-full outline-none ${
-            isLightMode ? "bg-white" : "bg-very-dark-blue text-white"
-          }`,
+          input: "w-full outline-none",
         };
       });
     }, replaceAfterTime);
