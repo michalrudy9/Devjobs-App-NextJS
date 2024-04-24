@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
 import classes from "./InputCheckbox.module.css";
 import iconCheck from "@/public/desktop/icon-check.svg";
@@ -32,9 +33,23 @@ const InputCheckbox: React.FC<{
         onClick={checkHandler}
         ref={checkboxState}
       />
-      <span className={classes.span}>
-        {isChecked && <Image src={iconCheck} alt="Check icon" />}
-      </span>
+      <motion.span
+        className={classes.span}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <AnimatePresence>
+          {isChecked && (
+            <motion.span
+              initial={{ translateY: 10 }}
+              animate={{ translateY: 0 }}
+              exit={{ translateY: 20 }}
+            >
+              <Image src={iconCheck} alt="Check icon" />
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.span>
       <p className="h-6 font-bold">{labelText}</p>
     </label>
   );
