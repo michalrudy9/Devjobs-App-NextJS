@@ -4,7 +4,6 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { motion } from "framer-motion";
 
 import { useAnimateInputText } from "@/app/lib/useAnimateInput";
-import { useAppSelector } from "@/store/hooks";
 
 const InputText: React.FC<{
   src: string | StaticImport;
@@ -12,14 +11,32 @@ const InputText: React.FC<{
   name?: string;
   placeholder?: string;
   className?: string;
-}> = ({ src, alt, name, placeholder, className }) => {
-  const { text: animateText, animationTime, replaceAfterTime, span, input} = useAppSelector((state) => state.inputText);
-  
-  const { label: labelStyle, input: inputStyle } = useAnimateInputText(animationTime, replaceAfterTime);
+  animatedText?: string;
+  delay?: number;
+  animated?: boolean;
+}> = ({
+  src,
+  alt,
+  name,
+  placeholder,
+  className,
+  animatedText,
+  delay,
+  animated,
+}) => {
+  const { label: labelStyle, input: inputStyle } = useAnimateInputText(
+    3500,
+    4000
+  );
 
   const style: string = `flex w-full gap-x-5 ${className}`;
 
-  const text = animateText.split(" ");
+  const text = animatedText!.split(" ");
+
+  const animation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+  };
 
   return (
     <div className={style}>
@@ -28,11 +45,12 @@ const InputText: React.FC<{
         {text.map((element, i) => (
           <motion.span
             key={i}
-            initial={span.initial}
-            animate={span.animate}
+            variants={animation}
+            initial={animated && "initial"}
+            animate={animated && "animate"}
             transition={{
-              duration: span.transition.duration,
-              delay: i / span.transition.delay,
+              duration: 0.25,
+              delay: i / delay!,
             }}
           >
             {element}{" "}
@@ -44,9 +62,10 @@ const InputText: React.FC<{
         name={name}
         placeholder={placeholder}
         className={inputStyle}
-        initial={input.initial}
-        animate={input.animate}
-        transition={input.transition}
+        variants={animation}
+        initial={animated && "initial"}
+        animate={animated && "animate"}
+        transition={{ delay: 4 }}
       />
     </div>
   );
