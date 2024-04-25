@@ -7,8 +7,8 @@ import { useAnimateInputText } from "@/app/lib/useAnimateInput";
 import { useAppSelector } from "@/store/hooks";
 
 const InputText: React.FC<{
-  src: string | StaticImport;
-  alt: string;
+  src?: string | StaticImport;
+  alt?: string;
   name?: string;
   placeholder?: string;
   className?: string;
@@ -33,7 +33,7 @@ const InputText: React.FC<{
 
   const style: string = `flex w-full gap-x-5 ${className}`;
 
-  const text = animatedText!.split(" ");
+  const text = animatedText && animatedText.split(" ");
 
   const animation = {
     initial: { opacity: 0 },
@@ -42,22 +42,25 @@ const InputText: React.FC<{
 
   return (
     <div className={style}>
-      <Image src={src} alt={alt} className="w-auto h-full" />
+      {src && alt && (
+        <Image src={src && src} alt={alt} className="w-auto h-full" />
+      )}
       <label className={labelStyle}>
-        {text.map((element, i) => (
-          <motion.span
-            key={i}
-            variants={animation}
-            initial={animated && "initial"}
-            animate={animated && "animate"}
-            transition={{
-              duration: 0.25,
-              delay: i / delay!,
-            }}
-          >
-            {element}{" "}
-          </motion.span>
-        ))}
+        {text &&
+          text.map((element, i) => (
+            <motion.span
+              key={i}
+              variants={animation}
+              initial={animated && "initial"}
+              animate={animated && "animate"}
+              transition={{
+                duration: 0.25,
+                delay: i / delay!,
+              }}
+            >
+              {element}{" "}
+            </motion.span>
+          ))}
       </label>
       <motion.input
         type="text"
