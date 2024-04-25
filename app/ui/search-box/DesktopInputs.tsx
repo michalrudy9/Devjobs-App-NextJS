@@ -19,7 +19,7 @@ const DesktopInput: React.FC<{
         name="searchText"
         placeholder="Filter by title, companies, expertise..."
         className="flex w-[30%]"
-        animatedText="Senior Frontend Developer"
+        animatedText="Frontend Developer"
         delay={1.5}
         animated={animatedSearchText}
       />
