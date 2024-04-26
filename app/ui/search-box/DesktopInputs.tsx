@@ -22,6 +22,8 @@ const DesktopInput: React.FC<{
         animatedText="Frontend Developer"
         delay={1.5}
         animated={animatedSearchText}
+        animationTime={3.5}
+        replaceAfterTime={4}
       />
       <InputText
         src={iconLocation}
@@ -32,6 +34,8 @@ const DesktopInput: React.FC<{
         animatedText=" Florida"
         delay={0.5}
         animated={animatedLocation}
+        animationTime={3.5}
+        replaceAfterTime={4}
       />
       <InputCheckbox
         name="fullTime"

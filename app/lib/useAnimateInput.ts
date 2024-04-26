@@ -24,7 +24,7 @@ export const useAnimateInputText = (
           input: prevValue.input,
         };
       });
-    }, animationTime);
+    }, animationTime * 1000);
 
     setTimeout(() => {
       setInputStyle((prevValue: InputTextStyle) => {
@@ -33,7 +33,7 @@ export const useAnimateInputText = (
           input: "w-full outline-none",
         };
       });
-    }, replaceAfterTime);
+    }, replaceAfterTime * 1000);
   }, []);
 
   return { ...inputStyle };

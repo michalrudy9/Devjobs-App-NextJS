@@ -15,6 +15,8 @@ const InputText: React.FC<{
   animatedText?: string;
   delay?: number;
   animated?: boolean;
+  animationTime?: number;
+  replaceAfterTime?: number;
 }> = ({
   src,
   alt,
@@ -24,11 +26,13 @@ const InputText: React.FC<{
   animatedText,
   delay,
   animated,
+  animationTime,
+  replaceAfterTime,
 }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
   const { label: labelStyle, input: inputStyle } = useAnimateInputText(
-    animated ? 3500 : 0,
-    animated ? 4000 : 0
+    animated ? animationTime! : 0,
+    animated ? replaceAfterTime! : 0
   );
 
   const style: string = `flex w-full gap-x-5 ${className}`;
@@ -72,7 +76,7 @@ const InputText: React.FC<{
         variants={animation}
         initial={animated && "initial"}
         animate={animated && "animate"}
-        transition={{ delay: 4 }}
+        transition={{ delay: replaceAfterTime }}
       />
     </div>
   );
