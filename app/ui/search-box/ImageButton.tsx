@@ -12,16 +12,17 @@ const ImageButton: React.FC<{
   type?: "button" | "submit" | "reset" | undefined;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  animated?: boolean;
-}> = ({ src, alt, className, type, onClick, animated }) => {
+  animateStyle?: "primary" | "secondary";
+}> = ({ src, alt, className, type, onClick, animateStyle }) => {
   const { pending } = useFormStatus();
   const style: string = `w-12 h-12 flex justify-center items-center ${className}`;
+  let variant = {};
 
-  const button = {
+  const primary = {
     animate: {
       rotate: [0, -10, 0, 10, 0],
       transition: {
-        delay: 3,
+        delay: 2,
         duration: 0.5,
         ease: "easeInOut",
       },
@@ -30,15 +31,23 @@ const ImageButton: React.FC<{
     whileTap: { scale: 0.9 },
   };
 
+  const secondary = {
+    whileHover: { scale: 1.2 },
+    whileTap: { rotate: 360 },
+  };
+
+  if (animateStyle === "primary") variant = primary;
+  if (animateStyle === "secondary") variant = secondary;
+
   return (
     <motion.button
       type={type}
       className={style}
       onClick={onClick}
-      variants={button}
-      animate={`${animated && "animate"}`}
-      whileHover={`${animated && "whileHover"}`}
-      whileTap={`${animated && "whileTap"}`}
+      variants={variant}
+      animate={"animate"}
+      whileHover={"whileHover"}
+      whileTap={"whileTap"}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
       {pending ? <Spinner /> : <Image src={src} alt={alt} />}
