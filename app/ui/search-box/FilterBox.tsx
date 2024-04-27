@@ -30,6 +30,7 @@ const FilterBox: React.FC<{
         closeModal={closeAfterSubmit}
         text="Search"
         className="w-full"
+        animated
       />
     </Modal>
   );

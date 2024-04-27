@@ -3,7 +3,7 @@
 import React from "react";
 import { useFormState } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import AlertBlock from "@/app/ui/common/AlertBlock";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -45,7 +45,7 @@ const SearchBox: React.FC<{
   const width = useWindowWidth();
   const dispatch = useAppDispatch();
   const isLightMode = useAppSelector((state) => state.mode.isLight);
-  const isShowing = useAppSelector((state) => state.modal.isShowing);
+  const isShowing = useAppSelector<boolean>((state) => state.modal.isShowing);
   const [state, formAction] = useFormState(submitSearchJobOffersForm, {
     message: "",
   });
@@ -77,15 +77,17 @@ const SearchBox: React.FC<{
       animate={animate}
       transition={transition}
     >
-      {isShowing && (
-        <FilterBox
-          onClose={() => {
-            dispatch(toggle());
-            document.body.style.overflow = "visible";
-          }}
-          closeAfterSubmit={closeModal}
-        />
-      )}
+      <AnimatePresence>
+        {isShowing && (
+          <FilterBox
+            onClose={() => {
+              dispatch(toggle());
+              document.body.style.overflow = "visible";
+            }}
+            closeAfterSubmit={closeModal}
+          />
+        )}
+      </AnimatePresence>
       <form action={formAction} className={style}>
         {width <= 768 && <MobileInputs />}
         {width > 768 && (
