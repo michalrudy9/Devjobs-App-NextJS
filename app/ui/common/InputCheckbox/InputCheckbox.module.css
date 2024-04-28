@@ -32,10 +32,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.2s ease;
 }
 
 .label:hover input~.span {
     background-color: #939BF4;
+    transition: background-color 0.2s ease;
 }
 
 .label input:checked~.span {

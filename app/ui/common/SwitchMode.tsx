@@ -1,24 +1,34 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import iconSun from "@/public/desktop/icon-sun.svg";
 import iconMoon from "@/public/desktop/icon-moon.svg";
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toggle } from "@/store/modeSlice";
 
 const SwitchMode = () => {
   const dispatch = useAppDispatch();
+  const isLightMode = useAppSelector((state) => state.mode.isLight);
 
   return (
     <div className="flex items-center gap-x-4">
       <Image src={iconSun} alt="Sun icon" className="w-auto h-full" />
-      <label className="inline-flex items-center cursor-pointer">
-        <input
-          type="checkbox"
-          className="sr-only peer"
-          onClick={() => dispatch(toggle())}
+      <div
+        className={`w-[2.813rem] h-[1.375rem] bg-gray/40 flex justify-start rounded-[3.125rem] p-1 cursor-pointer ${
+          !isLightMode && "justify-end"
+        }`}
+        onClick={() => dispatch(toggle())}
+      >
+        <motion.div
+          className="w-[0.875rem] h-[0.875rem] bg-white rounded-[2.5rem]"
+          layout
+          transition={{
+            type: "spring",
+            stiffness: 700,
+            damping: 30,
+          }}
         />
-        <div className="relative w-10 h-5 bg-white rounded-full peer-checked:after:translate-x-5 after:absolute after:top-[4px] after:start-[4px] after:bg-violet after:hover:bg-light-violet after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
-      </label>
+      </div>
       <Image src={iconMoon} alt="Moon icon" className="w-auto h-full" />
     </div>
   );

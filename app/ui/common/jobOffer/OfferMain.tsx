@@ -31,7 +31,11 @@ const OfferMain: React.FC<{
           </span>
         </div>
         <Link href={jobOffer.apply}>
-          <PrimaryButton text="Applay Now" className="h-12 w-full md:w-auto" />
+          <PrimaryButton
+            text="Applay Now"
+            className="h-12 w-full md:w-auto"
+            animated
+          />
         </Link>
       </header>
       <p className="mt-10">{jobOffer.description}</p>

@@ -8,6 +8,8 @@ export const useWindowWidth = (): number => {
   const resizeHandler = () => setWindowWidth(window.innerWidth);
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
