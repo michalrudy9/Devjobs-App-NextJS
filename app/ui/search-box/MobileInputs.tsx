@@ -4,8 +4,11 @@ import iconSearchWhite from "@/public/desktop/icon-search-white.svg";
 import iconFilter from "@/public/mobile/icon-filter.svg";
 import { toggle } from "@/store/modalSlice";
 import InputText from "@/app/ui/common/InputText";
+import React from "react";
 
-const MobileInputs = () => {
+const MobileInputs: React.FC<{
+  animatedSearchText?: boolean;
+}> = ({ animatedSearchText }) => {
   const dispatch = useAppDispatch();
   const isLightMode = useAppSelector((state) => state.mode.isLight);
 
@@ -21,7 +24,7 @@ const MobileInputs = () => {
         className={searchTextMobileStyle}
         animatedText="Frontend Developer"
         delay={1.5}
-        animated
+        animated={animatedSearchText}
         animationTime={2.5}
         replaceAfterTime={3}
       />

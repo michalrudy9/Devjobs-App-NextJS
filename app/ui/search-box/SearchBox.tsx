@@ -89,7 +89,9 @@ const SearchBox: React.FC<{
         )}
       </AnimatePresence>
       <form action={formAction} className={style}>
-        {width <= 768 && <MobileInputs />}
+        {width <= 768 && (
+          <MobileInputs animatedSearchText={animatedSearchText} />
+        )}
         {width > 768 && (
           <DesktopInputs
             animatedSubmmit={animatedSubmmit}
