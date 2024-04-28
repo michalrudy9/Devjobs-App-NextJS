@@ -28,6 +28,7 @@ const OfferFooter: React.FC<{
           <PrimaryButton
             text="Apply Now"
             className="w-full md:w-auto md:h-12"
+            animated
           />
         </Link>
       </div>
