@@ -34,7 +34,7 @@ export const useAnimateInputText = (
         };
       });
     }, replaceAfterTime * 1000);
-  }, []);
+  }, [animationTime, replaceAfterTime]);
 
   return { ...inputStyle };
 };

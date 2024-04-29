@@ -41,6 +41,7 @@ const SearchBox: React.FC<{
   animatedSearchText,
   animatedLocation,
 }) => {
+  const path = usePathname();
   const router = useRouter();
   const width = useWindowWidth();
   const dispatch = useAppDispatch();
@@ -50,13 +51,9 @@ const SearchBox: React.FC<{
     message: "",
   });
 
-  let path: string = "";
   let dataPath: DataPath[] = [];
 
-  if (!isAllJobOffers) {
-    path = usePathname();
-    dataPath = getDataPath(path);
-  }
+  if (!isAllJobOffers) dataPath = getDataPath(path);
 
   const closeModal = () => {
     setTimeout(() => {
