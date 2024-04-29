@@ -13,7 +13,7 @@ const JobOfferItem: React.FC<{
     isLightMode ? "bg-white text-black" : "bg-very-dark-blue text-white"
   } rounded-md px-8 pb-8 mt-14 md:h-[18rem] text-left`;
 
-  const src: string = "http://localhost:3000/logos/" + jobOffer.logo + ".svg";
+  const src: string = "https://devjobs-app-next-js.vercel.app/logos/" + jobOffer.logo + ".svg";
 
   return (
     <article className={style}>

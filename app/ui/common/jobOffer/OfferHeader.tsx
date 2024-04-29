@@ -9,7 +9,7 @@ import { JobOffer } from "@/models/JobOffer";
 const OfferHeader: React.FC<{ jobOffer: JobOffer }> = ({ jobOffer }) => {
   const isLightMode = useAppSelector((state) => state.mode.isLight);
 
-  const src: string = "http://localhost:3000/logos/" + jobOffer.logo + ".svg";
+  const src: string = "https://devjobs-app-next-js.vercel.app/logos/" + jobOffer.logo + ".svg";
 
   const style: string = `${
     isLightMode ? "bg-white" : "bg-very-dark-blue text-white"
