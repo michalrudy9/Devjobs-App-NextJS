@@ -1,5 +1,6 @@
 import { QueryResult, QueryResultRow, sql } from "@vercel/postgres";
 
+export const dynamic = "force-dynamic";
 export const GET = async (): Promise<Response> => {
   let response = {} as QueryResult<QueryResultRow>;
   try {
