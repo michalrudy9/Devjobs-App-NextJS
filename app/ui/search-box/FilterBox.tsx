@@ -2,7 +2,7 @@ import React from "react";
 
 import iconLocation from "@/public/desktop/icon-location.svg";
 import InputText from "@/app/ui/common/InputText";
-import InputCheckbox from "@/app/ui/common/inputCheckbox/InputCheckbox";
+import InputCheckbox from "../common/inputCheckbox/InputCheckbox";
 import PrimaryButton from "@/app/ui/common/buttons/PrimaryButton";
 import Modal from "@/app/ui/search-box/Modal";
 
